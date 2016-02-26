@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-@Qualifier(value = "usersRepository")
 public interface UsersRepository extends CrudRepository<User, Long> {
-    User findByUsername(String username);
+    User findByLogin(String login);
 }

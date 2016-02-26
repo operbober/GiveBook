@@ -25,8 +25,8 @@
         <module name="GiveBook" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GiveBook" target="1.6" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="GiveBook" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
