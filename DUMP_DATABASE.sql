@@ -1,77 +1,235 @@
-CREATE DATABASE  IF NOT EXISTS `bc` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `bc`;
--- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
---
--- Host: localhost    Database: bc
--- ------------------------------------------------------
--- Server version	5.5.30
+# SQL Manager for MySQL 5.5.3.46192
+# ---------------------------------------
+# Host     : localhost
+# Port     : 3306
+# Database : bc
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES latin1 */;
 
---
--- Table structure for table `book`
---
+SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS `book`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+DROP DATABASE IF EXISTS `bc`;
+
+CREATE DATABASE `bc`
+    CHARACTER SET 'latin1'
+    COLLATE 'latin1_swedish_ci';
+
+USE `bc`;
+
+#
+# ????????? ??? ??????? `author`: 
+#
+
+CREATE TABLE `author` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `person_id` INTEGER(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `person_id` (`person_id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `book`: 
+#
+
 CREATE TABLE `book` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `work_id` INTEGER(11) DEFAULT NULL,
+  `book_type` INTEGER(11) DEFAULT NULL,
+  `language` INTEGER(11) DEFAULT NULL,
+  `condition` INTEGER(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
 
---
--- Dumping data for table `book`
---
+#
+# ????????? ??? ??????? `book_type`: 
+#
 
-LOCK TABLES `book` WRITE;
-/*!40000 ALTER TABLE `book` DISABLE KEYS */;
-/*!40000 ALTER TABLE `book` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `book_type` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
 
---
--- Table structure for table `user`
---
+#
+# ????????? ??? ??????? `city`: 
+#
 
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `city` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `condition`: 
+#
+
+CREATE TABLE `condition` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `genre`: 
+#
+
+CREATE TABLE `genre` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `language`: 
+#
+
+CREATE TABLE `language` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `offer`: 
+#
+
+CREATE TABLE `offer` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INTEGER(11) NOT NULL,
+  `book_id` INTEGER(11) NOT NULL,
+  `offer_type_id` INTEGER(11) NOT NULL,
+  `city_id` INTEGER(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `offer_type`: 
+#
+
+CREATE TABLE `offer_type` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `person`: 
+#
+
+CREATE TABLE `person` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `last_name` VARCHAR(20) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `first_name` VARCHAR(20) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `midle_name` VARCHAR(20) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `city_id` INTEGER(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `role`: 
+#
+
+CREATE TABLE `role` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# ????????? ??? ??????? `user`: 
+#
+
 CREATE TABLE `user` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `LOGIN` varchar(45) NOT NULL,
-  `PASSWORD` varchar(45) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `LOGIN_UNIQUE` (`LOGIN`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(45) COLLATE latin1_swedish_ci NOT NULL,
+  `password` VARCHAR(100) COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `login` (`login`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=3 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
 
---
--- Dumping data for table `user`
---
+#
+# ????????? ??? ??????? `work`: 
+#
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE `work` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+#
+# ????????? ??? ??????? `work_title`: 
+#
+
+CREATE TABLE `work_title` (
+  `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) COLLATE latin1_swedish_ci NOT NULL,
+  `work_id` INTEGER(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB
+AUTO_INCREMENT=1 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
+;
+
+#
+# Data for the `user` table  (LIMIT 0,500)
+#
+
+INSERT INTO `user` (`id`, `login`, `password`) VALUES
+  (1,'user','user'),
+  (2,'user1','user1');
+COMMIT;
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-02-26 16:23:00

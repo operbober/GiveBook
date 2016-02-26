@@ -1,5 +1,7 @@
 package by.givebook.entities;
 
+import by.givebook.entities.superEntity.IdEntity;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,20 +10,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class User extends IdEntity{
     private String login;
     private String password;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return login;

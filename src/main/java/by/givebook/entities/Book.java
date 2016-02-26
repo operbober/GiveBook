@@ -1,5 +1,7 @@
 package by.givebook.entities;
 
+import by.givebook.entities.superEntity.IdEntity;
+
 import javax.persistence.*;
 
 /**
@@ -11,10 +13,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "book")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class Book extends IdEntity{
     private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
