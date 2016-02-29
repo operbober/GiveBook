@@ -1,26 +1,74 @@
 package by.givebook.entities;
 
 import by.givebook.entities.superEntity.IdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
- * Default class description.
- *
- * @author P.Sinitski
- * @version 1.0
- * @since 26.02.2016
+ * Created by operb_000 on 29.02.2016.
  */
 @Entity
-@Table(name = "book")
-public class Book extends IdEntity{
-    private String name;
+@Table
+public class Book extends IdEntity {
+    @ManyToOne
+    @JoinColumn(name = "work_id")
+    private Work work;
 
-    public String getName() {
-        return name;
+    @ManyToOne
+    @JoinColumn(name = "language_id")
+    private Language language;
+
+    @ManyToOne
+    @JoinColumn(name = "book_type_id")
+    private BookType bookType;
+
+    @ManyToOne
+    @JoinColumn(name = "condition_id")
+    private Condition condition;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    private List<Offer> offers;
+
+    public Work getWork() {
+        return work;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWork(Work work) {
+        this.work = work;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }

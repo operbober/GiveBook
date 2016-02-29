@@ -1,13 +1,20 @@
+/**
+ * Created by admin on 29.02.2016.
+ */
+
 'use strict';
 
-angular.module("giveBook", [])
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+var app = angular.module('giveBook', []);
+
+function UserController($scope, $http) {
+
+  $scope.users = [];
+
+  $scope.loadUsers = function() {
+    var httpRequest = $http.get('http://localhost:8081/users').success(function(data, status) {
+      $scope.users = data;
+    });
+
+  };
+
+}
