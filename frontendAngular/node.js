@@ -1,4 +1,3 @@
-
 /**
  * Created by FruityDevil on 27.02.2016.
  */
