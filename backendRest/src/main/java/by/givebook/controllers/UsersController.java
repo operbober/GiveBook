@@ -4,6 +4,7 @@ package by.givebook.controllers;
  * Created by operb_000 on 26.02.2016.
  */
 
+import by.givebook.controllers.superControllers.SimpleController;
 import by.givebook.entities.User;
 import by.givebook.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-public class UsersController {
+public class UsersController extends SimpleController {
     @Autowired
     UsersRepository users;
 
