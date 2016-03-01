@@ -42,9 +42,4 @@ public class AuthorServiceImpl extends SimpleServiceImpl<Author, Long> implement
             return false;
         }
     }
-
-    @Override
-    public boolean delete(Long id) {
-        return false;
-    }
 }

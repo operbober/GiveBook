@@ -12,9 +12,9 @@ import javax.persistence.MappedSuperclass;
 public class IdEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 }

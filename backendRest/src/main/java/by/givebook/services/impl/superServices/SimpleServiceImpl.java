@@ -3,6 +3,7 @@ package by.givebook.services.impl.superServices;
 import by.givebook.services.superServices.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,5 +27,16 @@ public class SimpleServiceImpl<T, ID extends Serializable> implements SimpleServ
         List<T> allentityes = new ArrayList<>();
         entityes.findAll().forEach(allentityes::add);
         return allentityes;
+    }
+
+    @Override
+    public boolean delete(ID id) {
+        try{
+            entityes.delete(id);
+            return true;
+        }
+        catch(Exception e){
+           return false;
+        }
     }
 }

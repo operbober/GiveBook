@@ -9,5 +9,4 @@ import by.givebook.services.superServices.SimpleService;
 public interface AuthorService extends SimpleService<Author, Long> {
     boolean add(String name);
     boolean update(Long id, String name);
-    boolean delete(Long id);
 }
