@@ -9,4 +9,5 @@ import java.util.List;
 public interface SimpleService<T, ID extends Serializable> {
     T get(ID id);
     List<T> getAll();
+    boolean delete(ID id);
 }

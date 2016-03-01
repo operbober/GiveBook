@@ -5,10 +5,7 @@ import by.givebook.entities.Author;
 import by.givebook.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.ManagedMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,18 +35,17 @@ public class AuthorController extends SimpleController{
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public boolean addOrUpdate(@RequestParam(value = "id",required = false) Long id,
-                       @RequestParam(value = "name", required = true) String name){
-        if (id == null) {
-            return authors.add(name);
+    public boolean addOrUpdate(@RequestBody Author author){
+        if (author.getId() == null) {
+            return authors.add(author.getName());
         }
         else{
-            return authors.update(id,name);
+            return authors.update(author.getId(), author.getName());
         }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public boolean delete(@RequestParam(value = "id", required = true) Long id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable("id") Long id){
         return authors.delete(id);
     }
 }
