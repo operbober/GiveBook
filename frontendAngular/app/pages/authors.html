@@ -17,21 +17,29 @@
             </div>
             <div ng-switch-when="edit">
                 <label>
-                    name:
-                    <input id="name" type="text" ng-model="authorForPut.name" required/>
+                    Фамилия:
+                    <input id="lastName" type="text" ng-model="item.lastName" required/>
+                    Имя:
+                    <input id="firstName" type="text" ng-model="item.firstName"/>
+                    Отчество:
+                    <input id="middleName" type="text" ng-model="item.middleName"/>
                 </label>
-                <input type="button" value="Put" ng-click="submitItem()"/>
+                <input type="button" value="Put" ng-click="submitItem(item)"/>
                 <input type="button" value="Cancel" ng-click="cancelModes()"/>
             </div>
         </div>
 
             <table>
                 <tr>
-                    <th>Name</th>
-                    <th>Action</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Действие</th>
                 </tr>
-                <tr ng-repeat="item in authors">
-                    <td>{{item.name}}</td>
+                <tr ng-repeat="item in itemList">
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.middleName}}</td>
                     <td>
                         <div>
                             <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
