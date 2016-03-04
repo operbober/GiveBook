@@ -1,6 +1,7 @@
-package by.givebook.repositories;
+package by.givebook.repositories.library;
 
 import by.givebook.entities.library.Work;
+import by.givebook.repositories.SimpleRepository;
 
 /**
  * Default class description.

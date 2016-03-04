@@ -2,15 +2,16 @@
 <html lang="en" ng-app="giveBook">
 <head>
   <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/app.css"/>
+    <link rel="stylesheet" href="../../css/app.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="../properties/globalProperties.js"></script>
+    <script src="../../properties/globalProperties.js"></script>
   <title>Users page</title>
 </head>
 <body>
-<script src="../controllers/userController.js"></script>
+<script src="../../controllers/idEntityController.js"></script>
+<script src="../../controllers/account/userController.js"></script>
   <div ng-app="giveBook">
-    <div ng-controller="UserController">
+    <div ng-controller="IdEntityController">
       <p>Click <a ng-click="loadUsers()">here</a> to load data.</p>
       <table>
         <tr>

@@ -9,5 +9,5 @@ import javax.persistence.Table;
  * Created by operb_000 on 28.02.2016.
  */
 @Entity
-@Table(name = "condition")
-public class Condition extends DictionaryEntity {}
+@Table(name = "book_condition")
+public class BookCondition extends DictionaryEntity {}

@@ -2,15 +2,16 @@
 <html lang="en" ng-app="giveBook">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/app.css"/>
+    <link rel="stylesheet" href="../../css/app.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="../properties/globalProperties.js"></script>
+    <script src="../../properties/globalProperties.js"></script>
     <title>Authors page</title>
 </head>
 <body>
-<script src="../controllers/authorController.js"></script>
+<script src="../../controllers/idEntityController.js"></script>
+<script src="../../controllers/library/authorController.js"></script>
 <div ng-app="giveBook">
-    <form name="addForm" ng-controller="AuthorController" ng-init="getAll()">
+    <form name="addForm" ng-controller="IdEntityController" ng-init="getAll()">
         <div ng-switch="mode">
             <div ng-switch-default>
                 <input type="button" value="Add" ng-click="onActionAdd()"/>

@@ -5,7 +5,11 @@ package by.givebook;
  */
 import by.givebook.entities.library.Author;
 import by.givebook.entities.account.User;
+import by.givebook.entities.library.Genre;
 import by.givebook.entities.library.Work;
+import by.givebook.entities.offer.BookCondition;
+import by.givebook.entities.offer.BookType;
+import by.givebook.entities.offer.Offer;
 import by.givebook.services.SimpleServiceImpl;
 import by.givebook.services.SimpleService;
 import org.springframework.boot.SpringApplication;
@@ -23,18 +27,24 @@ public class Application {
     }
 
     @Bean
-    public SimpleService<Work> workService() {
-        return new SimpleServiceImpl<Work>() { };
-    }
+    public SimpleService<Work> workService() { return new SimpleServiceImpl<Work>() { }; }
 
     @Bean
-    public SimpleService<User> userService() {
-        return new SimpleServiceImpl<User>() { };
-    }
+    public SimpleService<User> userService() { return new SimpleServiceImpl<User>() { }; }
 
     @Bean
-    public SimpleService<Author> authorService() {
-        return new SimpleServiceImpl<Author>() { };
-    }
+    public SimpleService<Author> authorService() { return new SimpleServiceImpl<Author>() { }; }
+
+    @Bean
+    public SimpleService<Genre> genreService() { return new SimpleServiceImpl<Genre>() { }; }
+
+    @Bean
+    public SimpleService<BookCondition> bookConditionService() { return new SimpleServiceImpl<BookCondition>() { }; }
+
+    @Bean
+    public SimpleService<BookType> bookTypeService() { return new SimpleServiceImpl<BookType>() { }; }
+
+    @Bean
+    public SimpleService<Offer> offerService() { return new SimpleServiceImpl<Offer>() { }; }
 }
 

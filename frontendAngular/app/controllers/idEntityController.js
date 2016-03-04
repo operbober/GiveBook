@@ -6,12 +6,10 @@
 
 var app = angular.module('giveBook', []);
 
-function WorkController($scope, $http) {
+app.controller('IdEntityController', function ($scope, $http) {
 
-    var uri = '/works/';
-    var work = {id: null, titles: [], authors: [], genres: []};
     $scope.itemList = [];
-    $scope.item = work;
+    $scope.item = itemTemplate;
     $scope.mode = '';
 
     $scope.getAll = function() {
@@ -46,4 +44,4 @@ function WorkController($scope, $http) {
             $scope.getAll();
         });
     };
-}
+});

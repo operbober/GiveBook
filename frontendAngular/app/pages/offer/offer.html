@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="giveBook">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/app.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="../../properties/globalProperties.js"></script>
+    <title>Authors page</title>
+</head>
+<body>
+<script src="../../controllers/offer/offerController.js"></script>
+<div ng-app="giveBook">
+    <form name="addForm" ng-controller="IdEntityController" ng-init="getAll()">
+        <div ng-switch="mode">
+            <div ng-switch-default>
+                <input type="button" value="Add" ng-click="onActionAdd()"/>
+            </div>
+            <div ng-switch-when="edit">
+                <label>
+                    Название книги:
+                    <input id="bookName" type="text" ng-model="item.book.name" required/>
+                    Состояние:
+                    <select id="bookCondition" ng-model="item.book.condition" required>
+                        <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                    </select>
+                    Автор/авторы:
+                    <input id="authors" type="text" ng-model="item.book.authors" required/>
+                </label>
+                <br>
+                <input type="button" value="Put" ng-click="submitItem(item)"/>
+                <input type="button" value="Cancel" ng-click="cancelModes()"/>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Книга</th>
+                <th>Тип</th>
+                <th>Состояние</th>
+                <th>Пользователь</th>
+            </tr>
+            <tr ng-repeat="item in itemList">
+                <td>{{item.book.name}}</td>
+                <td>{{item.book.bookType.name}}</td>
+                <td>{{item.book.bookCondition.name}}</td>
+                <td>{{item.user.login}}</td>
+                <td>
+                    <div>
+                        <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
+                        <input type="button" value="Delete" ng-click="deleteItem(item)"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+</body>
+</html>
