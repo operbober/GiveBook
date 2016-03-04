@@ -6,12 +6,12 @@
 
 var app = angular.module('giveBook', []);
 
-function AuthorController($scope, $http) {
+function WorkController($scope, $http) {
 
-    var uri = '/authors/';
-    var author = {id: null, lastName: '', firstName: '', middleName: ''};
+    var uri = '/works/';
+    var work = {id: null, titles: [], authors: [], genres: []};
     $scope.itemList = [];
-    $scope.item = author;
+    $scope.item = work;
     $scope.mode = '';
 
     $scope.getAll = function() {

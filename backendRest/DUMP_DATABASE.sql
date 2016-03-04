@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 5.6.22, for Win32 (x86)
+CREATE DATABASE  IF NOT EXISTS `bc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `bc`;
+-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
 --
 -- Host: localhost    Database: bc
 -- ------------------------------------------------------
--- Server version	5.5.23
+-- Server version	5.5.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,27 +18,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `bc`
---
-
-/*!40000 DROP DATABASE IF EXISTS `bc`*/;
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `bc` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `bc`;
-
---
 -- Table structure for table `author`
 --
 
+DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `author` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
+  `last_name` varchar(45) NOT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `middle_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +40,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Пушкин А.С.'),(2,'Есенин С.А.'),(3,'Толстой Л.А.');
+INSERT INTO `author` VALUES (1,'Пушкин','Александр','Сергеевич'),(2,'Хрюшкин','Александр','Сергеевич'),(45,'Толстой','Лев','Николаевич'),(46,'Чехов','Антон','Павлович'),(55,'Лукьяненко','Сергей','Васильевич'),(56,'Достоевский','Федор','Михайлович'),(70,'Бак','Джон','');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,6 +48,7 @@ UNLOCK TABLES;
 -- Table structure for table `book`
 --
 
+DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
@@ -87,6 +83,7 @@ UNLOCK TABLES;
 -- Table structure for table `book_type`
 --
 
+DROP TABLE IF EXISTS `book_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book_type` (
@@ -111,6 +108,7 @@ UNLOCK TABLES;
 -- Table structure for table `city`
 --
 
+DROP TABLE IF EXISTS `city`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `city` (
@@ -136,6 +134,7 @@ UNLOCK TABLES;
 -- Table structure for table `condition`
 --
 
+DROP TABLE IF EXISTS `condition`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `condition` (
@@ -160,6 +159,7 @@ UNLOCK TABLES;
 -- Table structure for table `genre`
 --
 
+DROP TABLE IF EXISTS `genre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `genre` (
@@ -184,6 +184,7 @@ UNLOCK TABLES;
 -- Table structure for table `language`
 --
 
+DROP TABLE IF EXISTS `language`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `language` (
@@ -208,6 +209,7 @@ UNLOCK TABLES;
 -- Table structure for table `offer`
 --
 
+DROP TABLE IF EXISTS `offer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `offer` (
@@ -239,6 +241,7 @@ UNLOCK TABLES;
 -- Table structure for table `offer_type`
 --
 
+DROP TABLE IF EXISTS `offer_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `offer_type` (
@@ -263,6 +266,7 @@ UNLOCK TABLES;
 -- Table structure for table `person`
 --
 
+DROP TABLE IF EXISTS `person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `person` (
@@ -292,6 +296,7 @@ UNLOCK TABLES;
 -- Table structure for table `role`
 --
 
+DROP TABLE IF EXISTS `role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role` (
@@ -316,6 +321,7 @@ UNLOCK TABLES;
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
@@ -347,6 +353,7 @@ UNLOCK TABLES;
 -- Table structure for table `users_roles`
 --
 
+DROP TABLE IF EXISTS `users_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_roles` (
@@ -354,8 +361,8 @@ CREATE TABLE `users_roles` (
   `role_id` int(11) NOT NULL,
   KEY `user_id` (`user_id`),
   KEY `role_id` (`role_id`),
-  CONSTRAINT `user_role_fk2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-  CONSTRAINT `user_role_fk1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `user_role_fk1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `user_role_fk2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -372,13 +379,14 @@ UNLOCK TABLES;
 -- Table structure for table `work`
 --
 
+DROP TABLE IF EXISTS `work`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,6 +395,7 @@ CREATE TABLE `work` (
 
 LOCK TABLES `work` WRITE;
 /*!40000 ALTER TABLE `work` DISABLE KEYS */;
+INSERT INTO `work` VALUES (1),(2);
 /*!40000 ALTER TABLE `work` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -394,6 +403,7 @@ UNLOCK TABLES;
 -- Table structure for table `work_title`
 --
 
+DROP TABLE IF EXISTS `work_title`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `work_title` (
@@ -404,7 +414,7 @@ CREATE TABLE `work_title` (
   UNIQUE KEY `id` (`id`) USING BTREE,
   KEY `work_id` (`work_id`) USING BTREE,
   CONSTRAINT `work_title_fk1` FOREIGN KEY (`work_id`) REFERENCES `work` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,6 +423,7 @@ CREATE TABLE `work_title` (
 
 LOCK TABLES `work_title` WRITE;
 /*!40000 ALTER TABLE `work_title` DISABLE KEYS */;
+INSERT INTO `work_title` VALUES (1,'Евгений Онегин',1),(2,'Evgen Oneg',1),(3,'Хрюшина библия',2);
 /*!40000 ALTER TABLE `work_title` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,6 +431,7 @@ UNLOCK TABLES;
 -- Table structure for table `works_authors`
 --
 
+DROP TABLE IF EXISTS `works_authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `works_authors` (
@@ -427,8 +439,8 @@ CREATE TABLE `works_authors` (
   `author_id` int(11) NOT NULL,
   KEY `work_id` (`work_id`),
   KEY `author_id` (`author_id`),
-  CONSTRAINT `work_author_fk2` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`),
-  CONSTRAINT `work_author_fk1` FOREIGN KEY (`work_id`) REFERENCES `work` (`id`)
+  CONSTRAINT `work_author_fk1` FOREIGN KEY (`work_id`) REFERENCES `work` (`id`),
+  CONSTRAINT `work_author_fk2` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -438,6 +450,7 @@ CREATE TABLE `works_authors` (
 
 LOCK TABLES `works_authors` WRITE;
 /*!40000 ALTER TABLE `works_authors` DISABLE KEYS */;
+INSERT INTO `works_authors` VALUES (1,1),(2,2);
 /*!40000 ALTER TABLE `works_authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,6 +458,7 @@ UNLOCK TABLES;
 -- Table structure for table `works_genres`
 --
 
+DROP TABLE IF EXISTS `works_genres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `works_genres` (
@@ -475,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-01 23:31:31
+-- Dump completed on 2016-03-03 17:46:55
