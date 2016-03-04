@@ -20,11 +20,16 @@ app.controller('IdEntityController', function ($scope, $http) {
 
     $scope.onActionAdd = function() {
         $scope.mode = 'edit';
+        $scope.loadAllLists();
     };
 
     $scope.onActionEdit = function(itemForEdit) {
         $scope.item = itemForEdit;
         $scope.mode = 'edit';
+        $scope.loadAllLists();
+    };
+
+    $scope.loadAllLists = function(){
     };
 
     $scope.cancelModes = function() {
