@@ -31,7 +31,7 @@ CREATE TABLE `author` (
   `middle_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Пушкин','Александр','Сергеевич'),(2,'Хрюшкин','Александр','Сергеевич'),(45,'Толстой','Лев','Николаевич'),(46,'Чехов','Антон','Павлович'),(55,'Лукьяненко','Сергей','Васильевич'),(56,'Достоевский','Федор','Михайлович'),(70,'Бак','Джон','');
+INSERT INTO `author` VALUES (1,'Пушкин','Александр','Сергеевич'),(2,'Хрюшкин','Александр','Сергеевич'),(45,'Толстой','Лев','Николаевич'),(46,'Чехов','Антон','Павлович'),(55,'Лукьяненко','Сергей','Васильевич'),(56,'Достоевский','Федор','Михайлович'),(70,'Бак','Джон',''),(71,'Кинг','Стивен','');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,17 +56,17 @@ CREATE TABLE `book` (
   `work_id` int(11) DEFAULT NULL,
   `language_id` int(11) DEFAULT NULL,
   `book_type_id` int(11) DEFAULT NULL,
-  `condition_id` int(11) DEFAULT NULL,
+  `book_condition_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `id` (`id`) USING BTREE,
   KEY `work_id` (`work_id`) USING BTREE,
   KEY `book_type_id` (`book_type_id`) USING BTREE,
   KEY `language_id` (`language_id`) USING BTREE,
-  KEY `condition_id` (`condition_id`) USING BTREE,
+  KEY `condition_id` (`book_condition_id`) USING BTREE,
+  CONSTRAINT `book_fk4` FOREIGN KEY (`book_condition_id`) REFERENCES `book_condition` (`id`),
   CONSTRAINT `book_fk1` FOREIGN KEY (`work_id`) REFERENCES `work` (`id`),
   CONSTRAINT `book_fk2` FOREIGN KEY (`book_type_id`) REFERENCES `book_type` (`id`),
-  CONSTRAINT `book_fk3` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`),
-  CONSTRAINT `book_fk4` FOREIGN KEY (`condition_id`) REFERENCES `condition` (`id`)
+  CONSTRAINT `book_fk3` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -77,6 +77,32 @@ CREATE TABLE `book` (
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_condition`
+--
+
+DROP TABLE IF EXISTS `book_condition`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book_condition` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `id` (`id`) USING BTREE,
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_condition`
+--
+
+LOCK TABLES `book_condition` WRITE;
+/*!40000 ALTER TABLE `book_condition` DISABLE KEYS */;
+INSERT INTO `book_condition` VALUES (3,'Изношенная'),(1,'Новая'),(4,'Очень даже ничего'),(6,'Полвека на полке стояла'),(5,'Потрепанная'),(2,'Старая');
+/*!40000 ALTER TABLE `book_condition` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -92,7 +118,7 @@ CREATE TABLE `book_type` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `id` (`id`) USING BTREE,
   UNIQUE KEY `name` (`name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +127,7 @@ CREATE TABLE `book_type` (
 
 LOCK TABLES `book_type` WRITE;
 /*!40000 ALTER TABLE `book_type` DISABLE KEYS */;
+INSERT INTO `book_type` VALUES (5,'Газета'),(4,'Журнал'),(1,'Карманная'),(3,'Мягкая обложка'),(2,'Твердый переплет');
 /*!40000 ALTER TABLE `book_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,31 +158,6 @@ INSERT INTO `city` VALUES (1,'Minsk');
 UNLOCK TABLES;
 
 --
--- Table structure for table `condition`
---
-
-DROP TABLE IF EXISTS `condition`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `condition` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `id` (`id`) USING BTREE,
-  UNIQUE KEY `name` (`name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `condition`
---
-
-LOCK TABLES `condition` WRITE;
-/*!40000 ALTER TABLE `condition` DISABLE KEYS */;
-/*!40000 ALTER TABLE `condition` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `genre`
 --
 
@@ -168,7 +170,7 @@ CREATE TABLE `genre` (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `id` (`id`) USING BTREE,
   UNIQUE KEY `name` (`name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,6 +179,7 @@ CREATE TABLE `genre` (
 
 LOCK TABLES `genre` WRITE;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
+INSERT INTO `genre` VALUES (7,'Журнал'),(1,'Классика'),(3,'Научная фантастика'),(6,'Публицистика'),(2,'Фантастика'),(4,'Фэнтези');
 /*!40000 ALTER TABLE `genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-03 17:46:55
+-- Dump completed on 2016-03-04 12:12:25

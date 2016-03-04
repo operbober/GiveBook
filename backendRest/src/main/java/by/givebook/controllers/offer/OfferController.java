@@ -1,7 +1,7 @@
-package by.givebook.controllers.library;
+package by.givebook.controllers.offer;
 
 import by.givebook.controllers.SimpleController;
-import by.givebook.entities.library.Work;
+import by.givebook.entities.offer.Offer;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Default class description.
  *
- * @author P.Sinitski
+ * @author P.Sinitsky
  * @version 1.0
- * @since 02.03.2016
+ * @since 04.03.2016
  */
 @RestController
-@RequestMapping("/works")
-public class WorkController extends SimpleController<Work> {
+@RequestMapping("/offers")
+public class OfferController extends SimpleController<Offer> {
 
     @Autowired
-    public WorkController(@Qualifier("workService") SimpleService<Work> service) {
+    public OfferController(@Qualifier("offerService") SimpleService<Offer> service) {
         super(service);
     }
 }

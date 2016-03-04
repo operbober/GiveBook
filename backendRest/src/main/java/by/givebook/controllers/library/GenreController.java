@@ -1,7 +1,7 @@
 package by.givebook.controllers.library;
 
 import by.givebook.controllers.SimpleController;
-import by.givebook.entities.library.Author;
+import by.givebook.entities.library.Genre;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 * @since   01.03.2016
 */
 @RestController
-@RequestMapping("/authors")
-public class AuthorController extends SimpleController<Author> {
+@RequestMapping("/genres")
+public class GenreController extends SimpleController<Genre> {
 
     @Autowired
-    public AuthorController(@Qualifier("authorService") SimpleService<Author> service) {
+    public GenreController(@Qualifier("genreService") SimpleService<Genre> service) {
         super(service);
     }
 }

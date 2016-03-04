@@ -15,61 +15,21 @@ import java.util.List;
 public class Book extends IdEntity {
     @ManyToOne
     @JoinColumn(name = "work_id")
-    private Work work;
+    public Work work;
 
     @ManyToOne
     @JoinColumn(name = "language_id")
-    private Language language;
+    public Language language;
 
     @ManyToOne
     @JoinColumn(name = "book_type_id")
-    private BookType bookType;
+    public BookType bookType;
 
     @ManyToOne
     @JoinColumn(name = "condition_id")
-    private Condition condition;
+    public BookCondition bookCondition;
 
     @JsonIgnore
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
-    private List<Offer> offers;
-
-    public Work getWork() {
-        return work;
-    }
-
-    public void setWork(Work work) {
-        this.work = work;
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public BookType getBookType() {
-        return bookType;
-    }
-
-    public void setBookType(BookType bookType) {
-        this.bookType = bookType;
-    }
-
-    public Condition getCondition() {
-        return condition;
-    }
-
-    public void setCondition(Condition condition) {
-        this.condition = condition;
-    }
-
-    public List<Offer> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(List<Offer> offers) {
-        this.offers = offers;
-    }
+    public List<Offer> offers;
 }
