@@ -12,9 +12,10 @@ import java.util.List;
 @Table(name = "work")
 public class Work extends IdEntity {
 
-    @OneToMany(targetEntity = WorkTitle.class, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "work_id")
-    public List<WorkTitle> titles;
+//    @OneToMany(targetEntity = WorkTitle.class, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "work_id")
+//    public List<WorkTitle> titles;
+    public String name;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "works_authors",

@@ -19,36 +19,45 @@
             <div ng-switch-when="edit">
 
                 <table style="min-width: 30%; max-width: 50%">
-                    <!--<tr>-->
-                        <!--<td>Тип предложения:</td>-->
-                        <!--<td>-->
-                            <!--<select id="offerType" ng-model="item.offerType" required>-->
+                    <tr>
+                        <td>Тип предложения:</td>
+                        <td>
+                            <select id="offerType"
+                                    ng-model="item.offerType"
+                                    ng-init="item.offerType = offerTypes[0]"
+                                    ng-options="offerType.name for offerType in offerTypes">
                                 <!--<option ng-repeat="offerType in offerTypes" value="{{offerType}}">{{offerType.name}}</option>-->
-                            <!--</select>-->
-                        <!--</td>-->
-                    <!--</tr>-->
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <td>Название книги:</td>
                         <td>
-                            <input id="bookName" type="text" ng-model="item.bookName" required/>
+                            <input id="bookName" type="text" data-ng-model="item.bookName" required/>
                         </td>
                     </tr>
                     <tr>
                         <td>Тип книги:</td>
                         <td>
-                            <select id="bookType" ng-model="item.bookType" required>
-                                <option ng-repeat="bookType in bookTypes" value="{{bookType}}">{{bookType.name}}</option>
+                            <select id="bookType"
+                                    ng-model="item.bookType"
+                                    ng-init="item.bookType = bookTypes[0]"
+                                    ng-options="bookType.name for bookType in bookTypes"
+                                    required>
                             </select>
                         </td>
                     </tr>
-                    <!--<tr>-->
-                        <!--<td>Состояние книги:</td>-->
-                        <!--<td>-->
-                            <!--<select id="bookCondition" ng-model="item.bookCondition" required>-->
-                                <!--<option ng-repeat="bookCondition in bookConditions" value="{{bookCondition}}">{{bookCondition.name}}</option>-->
-                            <!--</select>-->
-                        <!--</td>-->
-                    <!--</tr>-->
+                    <tr>
+                        <td>Состояние книги:</td>
+                        <td>
+                            <select id="bookCondition"
+                                    ng-model="item.bookCondition"
+
+                                    ng-options="bookCondition.name for bookCondition in bookConditions"
+                                    required>
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <td>Пользователь:</td>
                         <td>

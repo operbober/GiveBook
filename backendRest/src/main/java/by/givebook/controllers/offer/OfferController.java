@@ -1,15 +1,15 @@
 package by.givebook.controllers.offer;
 
+import by.givebook.controllers.GenericController;
 import by.givebook.controllers.SimpleController;
-import by.givebook.dto.OfferDTO;
+import by.givebook.dto.offer.OfferDTO;
 import by.givebook.entities.offer.Book;
 import by.givebook.entities.offer.Offer;
 import by.givebook.services.SimpleService;
+import by.givebook.services.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.LinkedHashMap;
 
 /**
  * Default class description.
@@ -20,21 +20,16 @@ import java.util.LinkedHashMap;
  */
 @RestController
 @RequestMapping("/offers")
-public class OfferController extends SimpleController<Offer> {
+public class OfferController extends GenericController<Offer, OfferService> {
 
     @Autowired
-    public OfferController(@Qualifier("offerService") SimpleService<Offer> service) {
+    public OfferController(OfferService service) {
         super(service);
     }
 
     //@Override
     @RequestMapping(value = "/new", method = RequestMethod.PUT)
-    protected boolean addOrUpdate(@RequestBody OfferDTO offer) {
-        Offer newOffer = new Offer();
-        newOffer.book = new Book();
-        //newOffer.book.bookType = offer.bookType;
-        //newOffer.book.bookCondition = offer.bookCondition;
-        return false;
+    protected boolean addOrUpdate(@RequestBody OfferDTO offerDTO) {
+        return service.save(service.transformDtoToEntity(offerDTO));
     }
-
 }

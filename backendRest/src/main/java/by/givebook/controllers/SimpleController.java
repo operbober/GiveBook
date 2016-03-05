@@ -19,56 +19,10 @@ import java.util.List;
  */
 
 @MappedSuperclass
-public abstract class SimpleController<E extends IdEntity>
+public abstract class SimpleController<E extends IdEntity> extends GenericController<E, SimpleService<E>>
         implements Filter {
 
-    SimpleService<E> service;
-
     protected SimpleController(SimpleService<E> service) {
-        this.service = service;
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
-    private List<E> get() {
-        return service.getAll();
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    private E getById(@PathVariable("id") Long id) {
-        return service.get(id);
-    }
-
-    @RequestMapping(method = RequestMethod.PUT)
-    protected boolean addOrUpdate(@RequestBody E entity) {
-        return service.save(entity);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable("id") Long id)
-    {
-        return service.delete(id);
-    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-        filterChain.doFilter(servletRequest, servletResponse);
-    }
-
-    @Override
-    public void destroy() {
-
+        super(service);
     }
 }

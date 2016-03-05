@@ -12,10 +12,10 @@ var bookConditionsUri = '/bookConditions/';
 var usersUri = '/users/';
 var itemTemplate = {
     id: null,
+    offerType: {id: null, name: ''},
     bookName: '',
     bookType: {id: null, name: ''},
-    //bookCondition: {id: null, name: ''},
-    //offerType: {id: null, name: ''},
+    bookCondition: {id: null, name: ''},
     userId: null
 };
 
@@ -30,7 +30,6 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $scope.onActionEdit = function(itemForEdit) {
         $scope.item.id = itemForEdit.id;
         $scope.item.bookName = itemForEdit.book.work.name;
-        alert(itemForEdit.book.work.titles);
         $scope.item.bookType = itemForEdit.book.bookType;
         $scope.item.userId = itemForEdit.user.id;
         $scope.mode = 'edit';

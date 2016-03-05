@@ -1,4 +1,4 @@
-package by.givebook.dto;
+package by.givebook.dto.offer;
 
 import by.givebook.entities.IdEntity;
 import by.givebook.entities.offer.Book;
@@ -21,9 +21,9 @@ public class OfferDTO {
 
     public BookType bookType;
 
-//    public BookCondition bookCondition;
+    public BookCondition bookCondition;
 
-//    public OfferType offerType;
+    public OfferType offerType;
 
     public Long userId;
 }
