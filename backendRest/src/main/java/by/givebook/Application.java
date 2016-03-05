@@ -10,6 +10,7 @@ import by.givebook.entities.library.Work;
 import by.givebook.entities.offer.BookCondition;
 import by.givebook.entities.offer.BookType;
 import by.givebook.entities.offer.Offer;
+import by.givebook.entities.offer.OfferType;
 import by.givebook.services.SimpleServiceImpl;
 import by.givebook.services.SimpleService;
 import org.springframework.boot.SpringApplication;
@@ -46,5 +47,8 @@ public class Application {
 
     @Bean
     public SimpleService<Offer> offerService() { return new SimpleServiceImpl<Offer>() { }; }
+
+    @Bean
+    public SimpleService<OfferType> offerTypeService() { return new SimpleServiceImpl<OfferType>() { }; }
 }
 

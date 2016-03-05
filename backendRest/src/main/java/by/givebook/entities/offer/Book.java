@@ -26,7 +26,7 @@ public class Book extends IdEntity {
     public BookType bookType;
 
     @ManyToOne
-    @JoinColumn(name = "condition_id")
+    @JoinColumn(name = "book_condition_id")
     public BookCondition bookCondition;
 
     @JsonIgnore

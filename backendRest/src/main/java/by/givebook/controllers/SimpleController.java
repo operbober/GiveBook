@@ -29,17 +29,17 @@ public abstract class SimpleController<E extends IdEntity>
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<E> get() {
+    private List<E> get() {
         return service.getAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public E getById(@PathVariable("id") Long id) {
+    private E getById(@PathVariable("id") Long id) {
         return service.get(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public boolean addOrUpdate(@RequestBody E entity) {
+    protected boolean addOrUpdate(@RequestBody E entity) {
         return service.save(entity);
     }
 

@@ -5,28 +5,59 @@
     <link rel="stylesheet" href="../../css/app.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="../../properties/globalProperties.js"></script>
-    <title>Authors page</title>
+    <title>Offers page</title>
 </head>
 <body>
+<script src="../../controllers/idEntityController.js"></script>
 <script src="../../controllers/offer/offerController.js"></script>
 <div ng-app="giveBook">
-    <form name="addForm" ng-controller="IdEntityController" ng-init="getAll()">
+    <form name="addForm" ng-controller="OfferController" ng-init="getAll()">
         <div ng-switch="mode">
             <div ng-switch-default>
                 <input type="button" value="Add" ng-click="onActionAdd()"/>
             </div>
             <div ng-switch-when="edit">
-                <label>
-                    Название книги:
-                    <input id="bookName" type="text" ng-model="item.book.name" required/>
-                    Состояние:
-                    <select id="bookCondition" ng-model="item.book.condition" required>
-                        <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
-                    </select>
-                    Автор/авторы:
-                    <input id="authors" type="text" ng-model="item.book.authors" required/>
-                </label>
-                <br>
+
+                <table style="min-width: 30%; max-width: 50%">
+                    <!--<tr>-->
+                        <!--<td>Тип предложения:</td>-->
+                        <!--<td>-->
+                            <!--<select id="offerType" ng-model="item.offerType" required>-->
+                                <!--<option ng-repeat="offerType in offerTypes" value="{{offerType}}">{{offerType.name}}</option>-->
+                            <!--</select>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td>Название книги:</td>
+                        <td>
+                            <input id="bookName" type="text" ng-model="item.bookName" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Тип книги:</td>
+                        <td>
+                            <select id="bookType" ng-model="item.bookType" required>
+                                <option ng-repeat="bookType in bookTypes" value="{{bookType}}">{{bookType.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<td>Состояние книги:</td>-->
+                        <!--<td>-->
+                            <!--<select id="bookCondition" ng-model="item.bookCondition" required>-->
+                                <!--<option ng-repeat="bookCondition in bookConditions" value="{{bookCondition}}">{{bookCondition.name}}</option>-->
+                            <!--</select>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td>Пользователь:</td>
+                        <td>
+                            <select id="user" ng-model="item.userId" required>
+                                <option ng-repeat="user in users" value="{{user.id}}">{{user.login}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
                 <input type="button" value="Put" ng-click="submitItem(item)"/>
                 <input type="button" value="Cancel" ng-click="cancelModes()"/>
             </div>
