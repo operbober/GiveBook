@@ -19,14 +19,14 @@ app.controller('IdEntityController', function ($scope, $http) {
     };
 
     $scope.onActionAdd = function() {
-        $scope.mode = 'edit';
         $scope.loadAllLists();
+        $scope.mode = 'edit';
     };
 
     $scope.onActionEdit = function(itemForEdit) {
+        $scope.loadAllLists();
         $scope.item = itemForEdit;
         $scope.mode = 'edit';
-        $scope.loadAllLists();
     };
 
     $scope.loadAllLists = function(){

@@ -12,6 +12,6 @@ import java.util.List;
 public interface SimpleService<E> {
     E get(Long id);
     List<E> getAll();
-    boolean delete(Long id);
-    boolean save(E entity);
+    void delete(Long id);
+    void save(E entity);
 }

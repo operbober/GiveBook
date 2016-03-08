@@ -7,39 +7,30 @@
  */
 var uri = '/offers/';
 var offerTypesUri = '/offerTypes/';
-var bookTypesUri = '/bookTypes/';
-var bookConditionsUri = '/bookConditions/';
+var booksUri = '/books/';
 var usersUri = '/users/';
 var itemTemplate = {
-    id: null,
-    offerType: {id: null, name: ''},
-    bookName: '',
-    bookType: {id: null, name: ''},
-    bookCondition: {id: null, name: ''},
-    userId: null
 };
 
 app.controller('OfferController', function ($scope, $http, $controller) {
     $controller('IdEntityController', {$scope: $scope});
 
     $scope.offerTypes = [];
-    $scope.bookTypes = [];
-    $scope.bookConditions = [];
+    $scope.books = [];
     $scope.users = [];
 
-    $scope.onActionEdit = function(itemForEdit) {
-        $scope.item.id = itemForEdit.id;
-        $scope.item.bookName = itemForEdit.book.work.name;
-        $scope.item.bookType = itemForEdit.book.bookType;
-        $scope.item.userId = itemForEdit.user.id;
-        $scope.mode = 'edit';
-        $scope.loadAllLists();
-    };
+    //$scope.onActionEdit = function(itemForEdit) {
+    //    $scope.item.id = itemForEdit.id;
+    //    $scope.item.bookName = itemForEdit.book.work.name;
+    //    $scope.item.bookType = itemForEdit.book.bookType;
+    //    $scope.item.userId = itemForEdit.user.id;
+    //    $scope.mode = 'edit';
+    //    $scope.loadAllLists();
+    //};
 
     $scope.loadAllLists = function () {
         $scope.getOfferTypes();
-        $scope.getBookTypes();
-        $scope.getBookConditions();
+        $scope.getBooks();
         $scope.getUsers();
     };
 
@@ -49,20 +40,14 @@ app.controller('OfferController', function ($scope, $http, $controller) {
         });
     };
 
-    $scope.getBookTypes = function () {
-        var httpRequest = $http.get(serverUrl + bookTypesUri).success(function (data, status) {
-            $scope.bookTypes = data;
-        });
-    };
-
-    $scope.getBookConditions = function () {
-        var httpRequest = $http.get(serverUrl + bookConditionsUri).success(function (data, status) {
-            $scope.bookConditions = data;
+    $scope.getBooks = function () {
+        var httpRequest = $http.get(serverUrl + booksUri).success(function (data, status) {
+            $scope.books = data;
         });
     };
 
     $scope.submitItem = function(itemForPut) {
-        var httpRequest = $http.put(serverUrl + uri + 'new', itemForPut).success(function(data, status) {
+        var httpRequest = $http.put(serverUrl + uri, itemForPut).success(function(data, status) {
         });
         $scope.cancelModes();
     };

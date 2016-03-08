@@ -1,6 +1,6 @@
 package by.givebook.entities.account;
 
-import by.givebook.entities.DictionaryEntity;
+import by.givebook.entities.NamedEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,5 +11,5 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "city")
-public class City extends DictionaryEntity {
+public class City extends NamedEntity {
 }

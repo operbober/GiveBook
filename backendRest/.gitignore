@@ -1,3 +1,5 @@
 .idea
+.sonar
+sonar-project.properties
 target
 *.iml

@@ -1,6 +1,6 @@
 package by.givebook.entities.library;
 
-import by.givebook.entities.DictionaryEntity;
+import by.givebook.entities.NamedEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "work_title")
-public class WorkTitle extends DictionaryEntity {
+public class WorkTitle extends NamedEntity {
 
     @JsonIgnore
     @ManyToOne

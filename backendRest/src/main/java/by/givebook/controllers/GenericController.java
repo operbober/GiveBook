@@ -37,14 +37,14 @@ public abstract class GenericController <E extends IdEntity, S extends SimpleSer
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    protected boolean addOrUpdate(@RequestBody E entity) {
-        return service.save(entity);
+    protected void addOrUpdate(@RequestBody E entity) {
+        service.save(entity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable("id") Long id)
+    public void delete(@PathVariable("id") Long id)
     {
-        return service.delete(id);
+        service.delete(id);
     }
 
     @Override
