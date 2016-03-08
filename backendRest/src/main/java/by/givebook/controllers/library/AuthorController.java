@@ -1,6 +1,6 @@
 package by.givebook.controllers.library;
 
-import by.givebook.controllers.SimpleController;
+import by.givebook.controllers.SimpleEntityController;
 import by.givebook.entities.library.Author;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 */
 @RestController
 @RequestMapping("/authors")
-public class AuthorController extends SimpleController<Author> {
+public class AuthorController extends SimpleEntityController<Author> {
 
     @Autowired
     public AuthorController(@Qualifier("authorService") SimpleService<Author> service) {

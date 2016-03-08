@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="giveBook">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/app.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="../../properties/globalProperties.js"></script>
+    <title>Login page</title>
+</head>
+<body>
+<script src="../../controllers/security/loginController.js"></script>
+<div ng-app="giveBook">
+    <form name="loginForm" ng-controller="LoginController">
+
+        <table style="min-width: 30%; max-width: 50%">
+            <tr>
+                <td>Логин:</td>
+                <td>
+                    <label>
+                        <input id="login" type="text" ng-model="credentials.login" required/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль:</td>
+                <td>
+                    <label>
+                        <input id="password" type="password" ng-model="credentials.password" required/>
+                    </label>
+                </td>
+            </tr>
+        </table>
+
+        <input type="button" value="Put" ng-click="authorise()"/>
+
+    </form>
+</div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+</body>
+</html>

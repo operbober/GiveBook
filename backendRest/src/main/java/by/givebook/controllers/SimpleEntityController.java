@@ -2,13 +2,9 @@ package by.givebook.controllers;
 
 import by.givebook.entities.IdEntity;
 import by.givebook.services.SimpleService;
-import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.MappedSuperclass;
 import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Default class description.
@@ -19,10 +15,10 @@ import java.util.List;
  */
 
 @MappedSuperclass
-public abstract class SimpleController<E extends IdEntity> extends GenericController<E, SimpleService<E>>
+public abstract class SimpleEntityController<E extends IdEntity> extends GenericEntityController<E, SimpleService<E>>
         implements Filter {
 
-    protected SimpleController(SimpleService<E> service) {
+    protected SimpleEntityController(SimpleService<E> service) {
         super(service);
     }
 }

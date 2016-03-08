@@ -35,15 +35,6 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Пользователь:</td>
-                        <td>
-                            <select id="user"
-                                    ng-model="item.user"
-                                    ng-options="user as user.login for user in users">
-                            </select>
-                        </td>
-                    </tr>
                 </table>
                 <input type="button" value="Put" ng-click="submitItem(item)"/>
                 <input type="button" value="Cancel" ng-click="cancelModes()"/>

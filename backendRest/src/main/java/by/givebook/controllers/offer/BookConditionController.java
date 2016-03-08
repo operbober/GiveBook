@@ -1,6 +1,6 @@
 package by.givebook.controllers.offer;
 
-import by.givebook.controllers.SimpleController;
+import by.givebook.controllers.SimpleEntityController;
 import by.givebook.entities.offer.BookCondition;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/bookConditions")
-public class BookConditionController extends SimpleController<BookCondition> {
+public class BookConditionController extends SimpleEntityController<BookCondition> {
 
     @Autowired
     public BookConditionController(@Qualifier("bookConditionService") SimpleService<BookCondition> service) {

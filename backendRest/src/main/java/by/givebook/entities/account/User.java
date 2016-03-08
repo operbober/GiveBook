@@ -17,6 +17,7 @@ import java.util.Set;
 public class User extends IdEntity{
 
     private String login;
+    @JsonIgnore
     private String password;
     private String email;
 

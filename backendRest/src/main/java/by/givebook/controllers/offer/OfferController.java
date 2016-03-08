@@ -1,6 +1,6 @@
 package by.givebook.controllers.offer;
 
-import by.givebook.controllers.GenericController;
+import by.givebook.controllers.GenericEntityController;
 import by.givebook.entities.offer.Offer;
 import by.givebook.services.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/offers")
-public class OfferController extends GenericController<Offer, OfferService> {
+public class OfferController extends GenericEntityController<Offer, OfferService> {
 
     @Autowired
     public OfferController(OfferService service) {

@@ -17,12 +17,12 @@ import java.util.List;
  * Created by FruityDevil on 05.03.2016.
  */
 @MappedSuperclass
-public abstract class GenericController <E extends IdEntity, S extends SimpleService<E>>
+public abstract class GenericEntityController<E extends IdEntity, S extends SimpleService<E>>
         implements Filter {
 
     protected S service;
 
-    protected GenericController(S service) {
+    protected GenericEntityController(S service) {
         this.service = service;
     }
 

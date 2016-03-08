@@ -1,6 +1,6 @@
 package by.givebook.controllers.library;
 
-import by.givebook.controllers.SimpleController;
+import by.givebook.controllers.SimpleEntityController;
 import by.givebook.entities.library.Genre;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 */
 @RestController
 @RequestMapping("/genres")
-public class GenreController extends SimpleController<Genre> {
+public class GenreController extends SimpleEntityController<Genre> {
 
     @Autowired
     public GenreController(@Qualifier("genreService") SimpleService<Genre> service) {
