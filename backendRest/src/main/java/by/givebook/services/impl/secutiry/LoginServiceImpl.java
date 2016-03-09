@@ -1,8 +1,7 @@
 package by.givebook.services.impl.secutiry;
 
-import by.givebook.dto.UserLoginDTO;
+import by.givebook.dto.security.UserLoginDTO;
 import by.givebook.entities.account.User;
-import by.givebook.repositories.SimpleRepository;
 import by.givebook.repositories.account.UserRepository;
 import by.givebook.services.security.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;

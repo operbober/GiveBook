@@ -1,6 +1,6 @@
 package by.givebook.services.security;
 
-import by.givebook.dto.UserLoginDTO;
+import by.givebook.dto.security.UserLoginDTO;
 import by.givebook.entities.account.User;
 
 /**
