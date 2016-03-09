@@ -8,9 +8,13 @@
     <title>Offers page</title>
 </head>
 <body>
-<script src="../../controllers/idEntityController.js"></script>
-<script src="../../controllers/offer/offerController.js"></script>
+<script src="../../controller/idEntityController.js"></script>
+<script src="../../controller/offer/offerController.js"></script>
 <div ng-app="giveBook">
+    <script src="../../controller/headerController.js"></script>
+    <div id="header" ng-controller="HeaderController">
+        <div ng-include src="'../template/header.html'"></div>
+    </div>
     <form name="addForm" ng-controller="OfferController" ng-init="getAll()">
         <div ng-switch="mode">
             <div ng-switch-default>
