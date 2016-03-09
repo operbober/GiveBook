@@ -2,6 +2,7 @@ package by.givebook.controllers.library;
 
 import by.givebook.controllers.GenericController;
 import by.givebook.entities.library.Genre;
+import by.givebook.services.NamedService;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 */
 @RestController
 @RequestMapping("/genres")
-public class GenreController extends GenericController<Genre,SimpleService<Genre>> implements javax.servlet.Filter {
+public class GenreController extends GenericController<Genre,NamedService<Genre>> implements javax.servlet.Filter {
 
     @Autowired
-    public GenreController(@Qualifier("genreService") SimpleService<Genre> service) {
+    public GenreController(@Qualifier("genreService") NamedService<Genre> service) {
         super(service);
     }
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/offerTypes")
-public class OfferTypeController extends GenericController<OfferType,SimpleService<OfferType>> {
+public class OfferTypeController extends GenericController<OfferType,NamedService<OfferType>> {
 
     @Autowired
     public OfferTypeController(@Qualifier("offerTypeService") NamedService<OfferType> service) {
