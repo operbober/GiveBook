@@ -1,6 +1,6 @@
 package by.givebook.controllers.security;
 
-import by.givebook.dto.UserLoginDTO;
+import by.givebook.dto.security.UserLoginDTO;
 import by.givebook.entities.account.User;
 import by.givebook.services.security.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package by.givebook.services.offer;
 
+import by.givebook.dto.offer.OfferDTO;
 import by.givebook.entities.offer.Offer;
 import by.givebook.services.SimpleService;
 
@@ -8,4 +9,5 @@ import by.givebook.services.SimpleService;
  */
 public interface OfferService extends SimpleService<Offer> {
 
+    void save(OfferDTO offerDTO);
 }

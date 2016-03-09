@@ -2,6 +2,7 @@ package by.givebook.repositories.library;
 
 import by.givebook.entities.library.Author;
 import by.givebook.repositories.SimpleRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * Default class description.
@@ -11,4 +12,7 @@ import by.givebook.repositories.SimpleRepository;
  * @since 02.03.2016
  */
 public interface AuthorRepository extends SimpleRepository<Author> {
+
+//    @Query(value = "")
+//    Object existsWithName(String lastName, String firstName, String middleName);
 }

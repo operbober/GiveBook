@@ -1,4 +1,4 @@
-package by.givebook.dto;
+package by.givebook.dto.security;
 
 /**
  * Default class description.

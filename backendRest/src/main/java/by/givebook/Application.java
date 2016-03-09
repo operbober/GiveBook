@@ -17,8 +17,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@EnableJpaRepositories(value = "by.givebook.repositories")
 @ComponentScan
 public class Application {
     public static void main(String[] args) {

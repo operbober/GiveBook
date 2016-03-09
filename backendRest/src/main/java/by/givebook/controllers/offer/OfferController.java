@@ -1,6 +1,7 @@
 package by.givebook.controllers.offer;
 
 import by.givebook.controllers.GenericController;
+import by.givebook.dto.offer.OfferDTO;
 import by.givebook.entities.offer.Offer;
 import by.givebook.services.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,8 @@ public class OfferController extends GenericController<Offer, OfferService> {
         super(service);
     }
 
+    @RequestMapping(value = "/addOffer", method = RequestMethod.PUT)
+    private void save(@RequestBody OfferDTO offerDTO) {
+        service.save(offerDTO);
+    }
 }

@@ -48,7 +48,7 @@ app.controller('OfferController', function ($scope, $http, $controller) {
 
     $scope.submitItem = function(itemForPut) {
         itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
-        var httpRequest = $http.put(serverUrl + uri, itemForPut).success(function(data, status) {
+        var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
         });
         $scope.cancelModes();
     };
