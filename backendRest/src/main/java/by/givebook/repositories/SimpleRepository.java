@@ -12,5 +12,6 @@ import org.springframework.stereotype.Repository;
  * @version 1.0
  * @since 02.03.2016
  */
+@NoRepositoryBean
 public interface SimpleRepository<E extends IdEntity> extends CrudRepository<E, Long> {
 }

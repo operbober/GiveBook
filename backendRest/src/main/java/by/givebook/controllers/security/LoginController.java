@@ -28,8 +28,7 @@ public class LoginController implements Filter {
 
     @RequestMapping(method = RequestMethod.POST)
     private User authenticate(@RequestBody UserLoginDTO userLoginDTO) {
-        User user = service.isAuthenticated(userLoginDTO);
-        return (user != null) ? user : null;
+        return service.isAuthenticated(userLoginDTO);
     }
 
     @Override

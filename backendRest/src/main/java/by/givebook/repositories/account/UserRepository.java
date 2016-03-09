@@ -11,4 +11,5 @@ import by.givebook.repositories.SimpleRepository;
  * @since 02.03.2016
  */
 public interface UserRepository extends SimpleRepository<User> {
+    User findByLoginIgnoreCase(String login);
 }

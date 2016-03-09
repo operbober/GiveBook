@@ -2,6 +2,7 @@ package by.givebook.services;
 
 
 import by.givebook.entities.IdEntity;
+import by.givebook.services.impl.SimpleServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 import org.springframework.context.ApplicationContext;

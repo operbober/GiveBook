@@ -1,6 +1,7 @@
 package by.givebook.repositories.offer;
 
 import by.givebook.entities.offer.BookCondition;
+import by.givebook.repositories.NamedRepository;
 import by.givebook.repositories.SimpleRepository;
 
 /**
@@ -10,5 +11,5 @@ import by.givebook.repositories.SimpleRepository;
  * @version 1.0
  * @since 04.03.2016
  */
-public interface BookConditionRepository extends SimpleRepository<BookCondition> {
+public interface BookConditionRepository extends NamedRepository<BookCondition> {
 }

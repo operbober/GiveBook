@@ -8,7 +8,9 @@ import by.givebook.entities.account.User;
 import by.givebook.entities.library.Genre;
 import by.givebook.entities.library.Work;
 import by.givebook.entities.offer.*;
-import by.givebook.services.SimpleServiceImpl;
+import by.givebook.services.NamedService;
+import by.givebook.services.impl.NamedServiceImpl;
+import by.givebook.services.impl.SimpleServiceImpl;
 import by.givebook.services.SimpleService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +26,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+
+    /*BEANS FOR SERVICES*/
     @Bean
     public SimpleService<Work> workService() { return new SimpleServiceImpl<Work>() { }; }
 
@@ -34,18 +38,18 @@ public class Application {
     public SimpleService<Author> authorService() { return new SimpleServiceImpl<Author>() { }; }
 
     @Bean
-    public SimpleService<Genre> genreService() { return new SimpleServiceImpl<Genre>() { }; }
+    public NamedService<Genre> genreService() { return new NamedServiceImpl<Genre>() { }; }
 
     @Bean
-    public SimpleService<BookCondition> bookConditionService() { return new SimpleServiceImpl<BookCondition>() { }; }
+    public NamedService<BookCondition> bookConditionService() { return new NamedServiceImpl<BookCondition>() { }; }
 
     @Bean
-    public SimpleService<BookType> bookTypeService() { return new SimpleServiceImpl<BookType>() { }; }
+    public NamedService<BookType> bookTypeService() { return new NamedServiceImpl<BookType>() { }; }
 
     @Bean
     public SimpleService<Book> bookService() { return new SimpleServiceImpl<Book>() { }; }
 
     @Bean
-    public SimpleService<OfferType> offerTypeService() { return new SimpleServiceImpl<OfferType>() { }; }
+    public NamedService<OfferType> offerTypeService() { return new NamedServiceImpl<OfferType>() { }; }
 }
 

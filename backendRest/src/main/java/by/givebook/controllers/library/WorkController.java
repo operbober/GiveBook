@@ -1,6 +1,6 @@
 package by.givebook.controllers.library;
 
-import by.givebook.controllers.SimpleEntityController;
+import by.givebook.controllers.GenericController;
 import by.givebook.entities.library.Work;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/works")
-public class WorkController extends SimpleEntityController<Work> {
+public class WorkController extends GenericController<Work,SimpleService<Work>> implements javax.servlet.Filter {
 
     @Autowired
     public WorkController(@Qualifier("workService") SimpleService<Work> service) {

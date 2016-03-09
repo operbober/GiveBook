@@ -1,7 +1,8 @@
-package by.givebook.services.offer;
+package by.givebook.services.impl.offer;
 
 import by.givebook.entities.offer.Offer;
-import by.givebook.services.SimpleServiceImpl;
+import by.givebook.services.impl.SimpleServiceImpl;
+import by.givebook.services.offer.OfferService;
 import org.springframework.stereotype.Service;
 
 /**

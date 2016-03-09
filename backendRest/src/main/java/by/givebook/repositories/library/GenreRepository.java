@@ -1,6 +1,7 @@
 package by.givebook.repositories.library;
 
 import by.givebook.entities.library.Genre;
+import by.givebook.repositories.NamedRepository;
 import by.givebook.repositories.SimpleRepository;
 
 /**
@@ -10,5 +11,5 @@ import by.givebook.repositories.SimpleRepository;
  * @version 1.0
  * @since 04.03.2016
  */
-public interface GenreRepository extends SimpleRepository<Genre> {
+public interface GenreRepository extends NamedRepository<Genre> {
 }

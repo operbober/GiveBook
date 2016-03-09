@@ -1,9 +1,10 @@
-package by.givebook.services.security;
+package by.givebook.services.impl.secutiry;
 
 import by.givebook.dto.UserLoginDTO;
 import by.givebook.entities.account.User;
 import by.givebook.repositories.SimpleRepository;
 import by.givebook.repositories.account.UserRepository;
+import by.givebook.services.security.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +23,12 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public User isAuthenticated(UserLoginDTO userLoginDTO) {
 
-        if (!userRepository.exists(1L)){
+        User user = userRepository.findByLoginIgnoreCase(userLoginDTO.getLogin());
+
+        if (user == null){
             return null;
         }
 
-        User user = userRepository.findOne(1L);
         return userLoginDTO.getPassword().equals(user.getPassword()) ? user : null;
     }
 }
