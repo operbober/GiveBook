@@ -1,6 +1,6 @@
 package by.givebook.entities.offer;
 
-import by.givebook.entities.DictionaryEntity;
+import by.givebook.entities.NamedEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,4 +10,4 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "language")
-public class Language extends DictionaryEntity {}
+public class Language extends NamedEntity {}

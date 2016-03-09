@@ -14,15 +14,47 @@ import java.util.List;
 @Table(name = "author")
 public class Author extends IdEntity {
     @Column(name = "last_name")
-    public String lastName;
+    private String lastName;
 
     @Column(name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @Column(name = "middle_name")
-    public String middleName;
+    private String middleName;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
-    public List<Work> works;
+    private List<Work> works;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public List<Work> getWorks() {
+        return works;
+    }
+
+    public void setWorks(List<Work> works) {
+        this.works = works;
+    }
 }

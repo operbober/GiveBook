@@ -5,5 +5,6 @@
  * @version 1.0
  * @date 04.03.2016
  */
-var uri = '/bookConditions/';
+
+var uri = '/offerTypes/';
 var itemTemplate = {id: null, name: ''};

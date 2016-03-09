@@ -1,12 +1,10 @@
 package by.givebook.controllers.offer;
 
-import by.givebook.controllers.SimpleController;
+import by.givebook.controllers.GenericEntityController;
 import by.givebook.entities.offer.Offer;
-import by.givebook.services.SimpleService;
+import by.givebook.services.offer.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Default class description.
@@ -17,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/offers")
-public class OfferController extends SimpleController<Offer> {
+public class OfferController extends GenericEntityController<Offer, OfferService> {
 
     @Autowired
-    public OfferController(@Qualifier("offerService") SimpleService<Offer> service) {
+    public OfferController(OfferService service) {
         super(service);
     }
+
 }

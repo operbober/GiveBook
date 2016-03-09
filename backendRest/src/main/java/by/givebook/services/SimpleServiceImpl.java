@@ -29,24 +29,12 @@ public abstract class SimpleServiceImpl<T extends IdEntity>
     }
 
     @Override
-    public boolean delete(Long id) {
-        try{
-            entitiesRepository.delete(id);
-            return true;
-        }
-        catch(Exception e){
-           return false;
-        }
+    public void delete(Long id) {
+        entitiesRepository.delete(id);
     }
 
     @Override
-    public boolean save(T entity) {
-        try{
-            entitiesRepository.save(entity);
-            return true;
-        }
-        catch (Exception e){
-            return false;
-        }
+    public void save(T entity) {
+        entitiesRepository.save(entity);
     }
 }

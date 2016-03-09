@@ -15,17 +15,24 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User extends IdEntity{
+
     private String login;
+    @JsonIgnore
     private String password;
     private String email;
+
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
+
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "users_roles",
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Offer> offers;

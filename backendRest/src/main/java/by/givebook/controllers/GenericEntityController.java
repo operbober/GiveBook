@@ -2,7 +2,10 @@ package by.givebook.controllers;
 
 import by.givebook.entities.IdEntity;
 import by.givebook.services.SimpleService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.persistence.MappedSuperclass;
 import javax.servlet.*;
@@ -11,42 +14,37 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Default class description.
- *
- * @author P.Sinitski
- * @version 1.0
- * @since 29.02.2016
+ * Created by FruityDevil on 05.03.2016.
  */
-
 @MappedSuperclass
-public abstract class SimpleController<E extends IdEntity>
+public abstract class GenericEntityController<E extends IdEntity, S extends SimpleService<E>>
         implements Filter {
 
-    SimpleService<E> service;
+    protected S service;
 
-    protected SimpleController(SimpleService<E> service) {
+    protected GenericEntityController(S service) {
         this.service = service;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<E> get() {
+    private List<E> get() {
         return service.getAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public E getById(@PathVariable("id") Long id) {
+    private E getById(@PathVariable("id") Long id) {
         return service.get(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public boolean addOrUpdate(@RequestBody E entity) {
-        return service.save(entity);
+    protected void addOrUpdate(@RequestBody E entity) {
+        service.save(entity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable("id") Long id)
+    public void delete(@PathVariable("id") Long id)
     {
-        return service.delete(id);
+        service.delete(id);
     }
 
     @Override
