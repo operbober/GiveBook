@@ -1,14 +1,9 @@
 package by.givebook.dto.offer;
 
 /**
- * Default class description.
- *
- * @author P.Sinitsky
- * @version 1.0
- * @since 11.03.2016
+ * Created by operb_000 on 10.03.2016.
  */
 public class AuthorDTO {
-
     private String lastName;
     private String firstName;
     private String middleName;
