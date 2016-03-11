@@ -8,22 +8,12 @@ package by.givebook.dto.offer;
  * @since 09.03.2016
  */
 public class OfferBookDTO {
-    private String lastName;
-    private String firstName;
-    private String middleName;
+    private AuthorDTO authorDTO;
 
     private String workTitle;
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
+    public AuthorDTO getAuthorDTO() {
+        return authorDTO;
     }
 
     public String getWorkTitle() {
