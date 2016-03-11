@@ -19,7 +19,7 @@ public class Book extends IdEntity {
 
     @ManyToOne
     @JoinColumn(name = "language_id")
-    private Language language;
+    private BookLanguage bookLanguage;
 
     @ManyToOne
     @JoinColumn(name = "book_type_id")
@@ -41,12 +41,12 @@ public class Book extends IdEntity {
         this.work = work;
     }
 
-    public Language getLanguage() {
-        return language;
+    public BookLanguage getBookLanguage() {
+        return bookLanguage;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setBookLanguage(BookLanguage bookLanguage) {
+        this.bookLanguage = bookLanguage;
     }
 
     public BookType getBookType() {

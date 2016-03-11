@@ -7,7 +7,9 @@
  */
 var uri = '/offers/';
 var offerTypesUri = '/offerTypes/';
-var booksUri = '/books/';
+var bookTypesUri = '/bookTypes/';
+var bookConditionsUri = '/bookConditions/';
+var bookLanguagesUri = '/bookLanguages/';
 var usersUri = '/users/';
 var itemTemplate = {
     offerBookDTO:{
@@ -19,7 +21,9 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $controller('IdEntityController', {$scope: $scope});
 
     $scope.offerTypes = [];
-    $scope.books = [];
+    $scope.bookTypes = [];
+    $scope.bookConditions = [];
+    $scope.bookLanguages = [];
     $scope.users = [];
 
     $scope.newAuthor = {};
@@ -40,7 +44,9 @@ app.controller('OfferController', function ($scope, $http, $controller) {
 
     $scope.loadAllLists = function () {
         $scope.getOfferTypes();
-        $scope.getBooks();
+        $scope.getBookTypes();
+        $scope.getBookConditions();
+        $scope.getBookLanguages();
         $scope.getUsers();
     };
 
@@ -50,9 +56,21 @@ app.controller('OfferController', function ($scope, $http, $controller) {
         });
     };
 
-    $scope.getBooks = function () {
-        var httpRequest = $http.get(serverUrl + booksUri).success(function (data, status) {
-            $scope.books = data;
+    $scope.getBookTypes = function () {
+        var httpRequest = $http.get(serverUrl + bookTypesUri).success(function (data, status) {
+            $scope.bookTypes = data;
+        });
+    };
+
+    $scope.getBookConditions = function () {
+        var httpRequest = $http.get(serverUrl + bookConditionsUri).success(function (data, status) {
+            $scope.bookConditions = data;
+        });
+    };
+
+    $scope.getBookLanguages = function () {
+        var httpRequest = $http.get(serverUrl + bookLanguagesUri).success(function (data, status) {
+            $scope.bookLanguages = data;
         });
     };
 

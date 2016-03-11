@@ -1,5 +1,9 @@
 package by.givebook.dto.offer;
 
+import by.givebook.entities.offer.BookCondition;
+import by.givebook.entities.offer.BookType;
+import by.givebook.entities.offer.BookLanguage;
+
 import java.util.List;
 
 /**
@@ -12,10 +16,25 @@ import java.util.List;
 public class OfferBookDTO {
 
     private List<AuthorDTO> authorListDTO;
+    private BookType bookType;
+    private BookCondition bookCondition;
+    private BookLanguage bookLanguage;
     private String workTitle;
 
     public List<AuthorDTO> getAuthorListDTO() {
         return authorListDTO;
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public BookCondition getBookCondition() {
+        return bookCondition;
+    }
+
+    public BookLanguage getBookLanguage() {
+        return bookLanguage;
     }
 
     public String getWorkTitle() {

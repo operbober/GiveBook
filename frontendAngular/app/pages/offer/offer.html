@@ -24,10 +24,43 @@
 
                 <table style="min-width: 30%; max-width: 50%">
                     <tr>
-                        <td>Тип предложения:</td>
+                        <td>Произведение:</td>
                         <td>
-                            <select ng-model="item.offerType"
-                                    ng-options="offerType as offerType.name for offerType in offerTypes">
+                            <label>
+                                <input id="workTitle" type="text" ng-model="item.offerBookDTO.workTitle" required/>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Тип книги:</td>
+                        <td>
+                            <select id="bookType"
+                                    ng-model="item.bookType"
+                                    ng-init="item.bookType = bookTypes[0]"
+                                    ng-options="bookType.name for bookType in bookTypes"
+                                    required>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Состояние книги:</td>
+                        <td>
+                            <select id="bookCondition"
+                                    ng-model="item.bookCondition"
+
+                                    ng-options="bookCondition.name for bookCondition in bookConditions"
+                                    required>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Язык книги:</td>
+                        <td>
+                            <select id="bookLanguage"
+                                    ng-model="item.bookLanguage"
+
+                                    ng-options="bookLanguage.name for bookLanguage in bookLanguages"
+                                    required>
                             </select>
                         </td>
                     </tr>
@@ -47,14 +80,6 @@
                             <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
                             <br/>
                             <input type="button" value="Add author" ng-click="addAuthorToItem(newAuthor)"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Произведение:</td>
-                        <td>
-                            <label>
-                                <input id="workTitle" type="text" ng-model="item.offerBookDTO.workTitle" required/>
-                            </label>
                         </td>
                     </tr>
                 </table>
