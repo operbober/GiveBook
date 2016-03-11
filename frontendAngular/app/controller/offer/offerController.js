@@ -10,6 +10,9 @@ var offerTypesUri = '/offerTypes/';
 var booksUri = '/books/';
 var usersUri = '/users/';
 var itemTemplate = {
+    offerBookDTO:{
+        authorListDTO: []
+    }
 };
 
 app.controller('OfferController', function ($scope, $http, $controller) {
@@ -19,6 +22,8 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $scope.books = [];
     $scope.users = [];
 
+    $scope.newAuthor = {};
+
     //$scope.onActionEdit = function(itemForEdit) {
     //    $scope.item.id = itemForEdit.id;
     //    $scope.item.bookName = itemForEdit.book.work.name;
@@ -27,6 +32,11 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     //    $scope.mode = 'edit';
     //    $scope.loadAllLists();
     //};
+
+    $scope.addAuthorToItem = function (authorForPut) {
+        $scope.item.offerBookDTO.authorListDTO.push(authorForPut);
+        $scope.newAuthor = {};
+    };
 
     $scope.loadAllLists = function () {
         $scope.getOfferTypes();

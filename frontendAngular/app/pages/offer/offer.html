@@ -32,13 +32,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Автор:</td>
+                        <td>Автор(ы):</td>
                         <td>
-                            <label>
-                                <input id="lastName" type="text" ng-model="item.offerBookDTO.lastName" required/>
-                                <input id="firstName" type="text" ng-model="item.offerBookDTO.firstName"/>
-                                <input id="middleName" type="text" ng-model="item.offerBookDTO.middleName"/>
+                            <label ng-repeat="author in item.offerBookDTO.authorListDTO">
+                                {{author.lastName}}
                             </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input id="lastName" type="text" ng-model="newAuthor.lastName" required/>
+                            <input id="firstName" type="text" ng-model="newAuthor.firstName"/>
+                            <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
+                            <br/>
+                            <input type="button" value="Add author" ng-click="addAuthorToItem(newAuthor)"/>
                         </td>
                     </tr>
                     <tr>

@@ -1,5 +1,7 @@
 package by.givebook.dto.offer;
 
+import java.util.List;
+
 /**
  * Default class description.
  *
@@ -8,22 +10,12 @@ package by.givebook.dto.offer;
  * @since 09.03.2016
  */
 public class OfferBookDTO {
-    private String lastName;
-    private String firstName;
-    private String middleName;
 
+    private List<AuthorDTO> authorListDTO;
     private String workTitle;
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
+    public List<AuthorDTO> getAuthorListDTO() {
+        return authorListDTO;
     }
 
     public String getWorkTitle() {
