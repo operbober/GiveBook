@@ -15,15 +15,11 @@ import java.util.List;
  */
 public class OfferBookDTO {
 
-    private List<AuthorDTO> authorListDTO;
     private BookType bookType;
     private BookCondition bookCondition;
     private BookLanguage bookLanguage;
-    private String workTitle;
 
-    public List<AuthorDTO> getAuthorListDTO() {
-        return authorListDTO;
-    }
+    private List<WorkDTO> workListDTO;
 
     public BookType getBookType() {
         return bookType;
@@ -37,7 +33,7 @@ public class OfferBookDTO {
         return bookLanguage;
     }
 
-    public String getWorkTitle() {
-        return workTitle;
+    public List<WorkDTO> getWorkListDTO() {
+        return workListDTO;
     }
 }

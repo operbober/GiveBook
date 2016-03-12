@@ -13,7 +13,10 @@ var bookLanguagesUri = '/bookLanguages/';
 var usersUri = '/users/';
 var itemTemplate = {
     offerBookDTO:{
-        authorListDTO: []
+        bookType:{},
+        bookCondition:{},
+        bookLanguage:{},
+        workListDTO:[]
     }
 };
 
@@ -27,19 +30,16 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $scope.users = [];
 
     $scope.newAuthor = {};
+    $scope.newWork = {authorListDTO: []};
 
-    //$scope.onActionEdit = function(itemForEdit) {
-    //    $scope.item.id = itemForEdit.id;
-    //    $scope.item.bookName = itemForEdit.book.work.name;
-    //    $scope.item.bookType = itemForEdit.book.bookType;
-    //    $scope.item.userId = itemForEdit.user.id;
-    //    $scope.mode = 'edit';
-    //    $scope.loadAllLists();
-    //};
-
-    $scope.addAuthorToItem = function (authorForPut) {
-        $scope.item.offerBookDTO.authorListDTO.push(authorForPut);
+    $scope.addAuthorToWork = function (authorForPut) {
+        $scope.newWork.authorListDTO.push(authorForPut);
         $scope.newAuthor = {};
+    };
+
+    $scope.addWorkToItem = function (workForPut) {
+        $scope.item.offerBookDTO.workListDTO.push(workForPut);
+        $scope.newWork = {authorListDTO: []};
     };
 
     $scope.loadAllLists = function () {

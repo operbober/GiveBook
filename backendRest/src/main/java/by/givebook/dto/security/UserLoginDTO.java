@@ -4,7 +4,7 @@ package by.givebook.dto.security;
  * Default class description.
  *
  * @author P.Sinitsky.
- * @date 08.03.2016.
+ * @since 08.03.2016.
  */
 public class UserLoginDTO {
     private String login;
