@@ -31,27 +31,48 @@ public class Application {
 
     /*BEANS FOR SERVICES*/
     @Bean
-    public SimpleService<Work> workService() { return new SimpleServiceImpl<Work>() { }; }
+    public SimpleService<Work> workService() {
+        return new SimpleServiceImpl<Work>() { };
+    }
 
     @Bean
-    public SimpleService<User> userService() { return new SimpleServiceImpl<User>() { }; }
+    public SimpleService<User> userService() {
+        return new SimpleServiceImpl<User>() { };
+    }
 
     @Bean
-    public SimpleService<Author> authorService() { return new SimpleServiceImpl<Author>() { }; }
+    public SimpleService<Author> authorService() {
+        return new SimpleServiceImpl<Author>() { };
+    }
 
     @Bean
-    public NamedService<Genre> genreService() { return new NamedServiceImpl<Genre>() { }; }
+    public NamedService<Genre> genreService() {
+        return new NamedServiceImpl<Genre>() { };
+    }
 
     @Bean
-    public NamedService<BookCondition> bookConditionService() { return new NamedServiceImpl<BookCondition>() { }; }
+    public NamedService<BookCondition> bookConditionService() {
+        return new NamedServiceImpl<BookCondition>() { };
+    }
 
     @Bean
-    public NamedService<BookType> bookTypeService() { return new NamedServiceImpl<BookType>() { }; }
+    public NamedService<BookType> bookTypeService() {
+        return new NamedServiceImpl<BookType>() { };
+    }
 
     @Bean
-    public SimpleService<Book> bookService() { return new SimpleServiceImpl<Book>() { }; }
+    public NamedService<BookLanguage> bookLanguageService() {
+        return new NamedServiceImpl<BookLanguage>() { };
+    }
 
     @Bean
-    public NamedService<OfferType> offerTypeService() { return new NamedServiceImpl<OfferType>() { }; }
+    public SimpleService<Book> bookService() {
+        return new SimpleServiceImpl<Book>() { };
+    }
+
+    @Bean
+    public NamedService<OfferType> offerTypeService() {
+        return new NamedServiceImpl<OfferType>() { };
+    }
 }
 

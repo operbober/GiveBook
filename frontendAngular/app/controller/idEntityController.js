@@ -33,7 +33,7 @@ app.controller('IdEntityController', function ($scope, $http) {
     };
 
     $scope.cancelModes = function() {
-        $scope.item = {id: null, name: ''};
+        $scope.item = itemTemplate;
         $scope.mode = '';
         $scope.getAll();
     };
