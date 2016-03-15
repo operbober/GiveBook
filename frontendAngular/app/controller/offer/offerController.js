@@ -12,12 +12,7 @@ var bookConditionsUri = '/bookConditions/';
 var bookLanguagesUri = '/bookLanguages/';
 var usersUri = '/users/';
 var itemTemplate = {
-    offerBookDTO:{
-        bookType:{},
-        bookCondition:{},
-        bookLanguage:{},
-        workListDTO:[]
-    }
+	bookDTO:{}
 };
 
 app.controller('OfferController', function ($scope, $http, $controller) {
@@ -30,16 +25,22 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $scope.users = [];
 
     $scope.newAuthor = {};
-    $scope.newWork = {authorListDTO: []};
+    $scope.newWork = {};
 
     $scope.addAuthorToWork = function (authorForPut) {
+		if ($scope.newWork.authorListDTO === undefined){
+			$scope.newWork.authorListDTO = new Array;
+		}
         $scope.newWork.authorListDTO.push(authorForPut);
         $scope.newAuthor = {};
     };
 
     $scope.addWorkToItem = function (workForPut) {
-        $scope.item.offerBookDTO.workListDTO.push(workForPut);
-        $scope.newWork = {authorListDTO: []};
+		if ($scope.item.bookDTO.workListDTO === undefined){
+			$scope.item.bookDTO.workListDTO = new Array;
+		}
+        $scope.item.bookDTO.workListDTO.push(workForPut);
+        $scope.newWork = {};
     };
 
     $scope.loadAllLists = function () {
@@ -75,7 +76,7 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     };
 
     $scope.submitItem = function(itemForPut) {
-        itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
+        //itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
         var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
         });
         $scope.cancelModes();

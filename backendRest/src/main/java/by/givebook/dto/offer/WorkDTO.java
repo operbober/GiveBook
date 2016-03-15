@@ -1,6 +1,11 @@
 package by.givebook.dto.offer;
 
+import by.givebook.entities.library.Author;
+import by.givebook.entities.library.Work;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Default class description.
@@ -20,5 +25,13 @@ public class WorkDTO {
 
     public String getWorkTitle() {
         return workTitle;
+    }
+
+    public Work toWork(){
+        List<Author> authors = null;
+        if (authorListDTO != null) {
+            authors = authorListDTO.stream().map(AuthorDTO::toAuthor).collect(Collectors.toList());
+        }
+        return new Work(workTitle, authors, null);
     }
 }

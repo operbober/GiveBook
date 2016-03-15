@@ -19,15 +19,23 @@ public class Work extends IdEntity {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "works_authors",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns= @JoinColumn(name = "work_id"))
+            joinColumns = @JoinColumn(name = "work_id"),
+            inverseJoinColumns= @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "works_genres",
-            joinColumns = @JoinColumn(name = "genre_id"),
-            inverseJoinColumns= @JoinColumn(name = "work_id"))
+            joinColumns = @JoinColumn(name = "work_id"),
+            inverseJoinColumns= @JoinColumn(name = "genre_id"))
     private List<Genre> genres;
+
+    public Work() {}
+
+    public Work(String name, List<Author> authors, List<Genre> genres) {
+        this.name = name;
+        this.authors = authors;
+        this.genres = genres;
+    }
 
     public String getName() {
         return name;

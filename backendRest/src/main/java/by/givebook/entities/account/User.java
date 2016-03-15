@@ -22,7 +22,7 @@ public class User extends IdEntity{
     private String email;
 
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "person_id")
     private Person person;
 

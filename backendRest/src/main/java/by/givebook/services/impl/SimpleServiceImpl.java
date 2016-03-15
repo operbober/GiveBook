@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Created by operb_000 on 29.02.2016.
  */
-public abstract class SimpleServiceImpl<E extends IdEntity>
+public abstract class SimpleServiceImpl<E extends IdEntity, R extends SimpleRepository<E>>
         implements SimpleService<E> {
 
     @Autowired
-    SimpleRepository<E> repository;
+    protected R repository;
 
     @Override
     public E get(Long id) {
@@ -35,7 +35,8 @@ public abstract class SimpleServiceImpl<E extends IdEntity>
     }
 
     @Override
-    public void save(E entity) {
+    public E save(E entity) {
         repository.save(entity);
+        return null;
     }
 }

@@ -27,7 +27,7 @@
                         <td>Тип книги:</td>
                         <td>
                             <select id="bookType"
-                                    ng-model="item.offerBookDTO.bookType"
+                                    ng-model="item.bookDTO.bookType"
                                     ng-init="item.bookType = bookTypes[0]"
                                     ng-options="bookType.name for bookType in bookTypes"
                                     required>
@@ -38,7 +38,7 @@
                         <td>Состояние книги:</td>
                         <td>
                             <select id="bookCondition"
-                                    ng-model="item.offerBookDTO.bookCondition"
+                                    ng-model="item.bookDTO.bookCondition"
 
                                     ng-options="bookCondition.name for bookCondition in bookConditions"
                                     required>
@@ -49,7 +49,7 @@
                         <td>Язык книги:</td>
                         <td>
                             <select id="bookLanguage"
-                                    ng-model="item.offerBookDTO.bookLanguage"
+                                    ng-model="item.bookDTO.bookLanguage"
 
                                     ng-options="bookLanguage.name for bookLanguage in bookLanguages"
                                     required>
@@ -64,7 +64,7 @@
                     <tr>
                         <td>Произведение(я):</td>
                         <td>
-                            <label ng-repeat="work in item.offerBookDTO.workListDTO">
+                            <label ng-repeat="work in item.bookDTO.workListDTO">
                                 {{work.workTitle}}
                             </label>
                         </td>
@@ -139,3 +139,4 @@
 -->
 </body>
 </html>
+
