@@ -20,8 +20,8 @@ var itemTemplate = {
     }
 };
 
-app.controller('OfferController', function ($scope, $http, $controller) {
-    $controller('IdEntityController', {$scope: $scope});
+app.controller('offerController', function ($scope, $http, $controller) {
+    $controller('dictionaryController', {$scope: $scope});
 
     $scope.offerTypes = [];
     $scope.bookTypes = [];
@@ -47,7 +47,6 @@ app.controller('OfferController', function ($scope, $http, $controller) {
         $scope.getBookTypes();
         $scope.getBookConditions();
         $scope.getBookLanguages();
-        $scope.getUsers();
     };
 
     $scope.getOfferTypes = function () {
@@ -79,11 +78,5 @@ app.controller('OfferController', function ($scope, $http, $controller) {
         var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
         });
         $scope.cancelModes();
-    };
-
-    $scope.getUsers = function () {
-        var httpRequest = $http.get(serverUrl + usersUri).success(function (data, status) {
-            $scope.users = data;
-        });
     };
 });

@@ -6,14 +6,22 @@
  * @date 09.03.2016
  */
 
-app.controller('HeaderController', function ($scope) {
+"use strict";
+
+app.controller('headerController', ['$scope', function ($scope) {
 
     $scope.isAuthenticated = function() {
-        return JSON.parse(sessionStorage.getItem('currentUser')) != '';
+  //      alert(sessionStorage.getItem('currentUser'));
+        return sessionStorage.getItem('currentUser') !== null
+            ? JSON.parse(sessionStorage.getItem('currentUser')) !== ''
+            : false;
     };
 
-    $scope.isAlive = true;
     $scope.getCurrentUser = function() {
         return JSON.parse(sessionStorage.getItem('currentUser'));
     };
-});
+
+    $scope.logOut = function() {
+        sessionStorage.removeItem('currentUser');
+    };
+}]);

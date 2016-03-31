@@ -1,0 +1,117 @@
+<form name="pageForm" ng-init="onLoad()">
+    <div ng-switch="mode">
+        <div ng-switch-default>
+            <input type="button" value="Add" ng-click="onActionAdd()"/>
+        </div>
+        <div ng-switch-when=true>
+
+            <table style="min-width: 30%; max-width: 50%">
+                <tr>
+                    <td>Тип книги:</td>
+                    <td>
+                        <select id="bookType"
+                                ng-model="item.offerBookDTO.bookType"
+                                ng-init="item.bookType = bookTypes[0]"
+                                ng-options="bookType.name for bookType in bookTypes"
+                                required>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Состояние книги:</td>
+                    <td>
+                        <select id="bookCondition"
+                                ng-model="item.offerBookDTO.bookCondition"
+
+                                ng-options="bookCondition.name for bookCondition in bookConditions"
+                                required>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Язык книги:</td>
+                    <td>
+                        <select id="bookLanguage"
+                                ng-model="item.offerBookDTO.bookLanguage"
+
+                                ng-options="bookLanguage.name for bookLanguage in bookLanguages"
+                                required>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    <hr/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Произведение(я):</td>
+                    <td>
+                        <label ng-repeat="work in item.offerBookDTO.workListDTO">
+                            {{work.workTitle}}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Название произведения:</td>
+                    <td>
+                        <label>
+                            <input id="workTitle" type="text" ng-model="newWork.workTitle" required/>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Автор(ы):</td>
+                    <td>
+                        <label ng-repeat="author in newWork.authorListDTO">
+                            {{author.lastName}}
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input id="lastName" type="text" ng-model="newAuthor.lastName" required/>
+                        <input id="firstName" type="text" ng-model="newAuthor.firstName"/>
+                        <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
+                        <br/>
+                        <input type="button" value="Add author to work" ng-click="addAuthorToWork(newAuthor)"/>
+                        <br/>
+                        <input type="button" value="Add work to book" ng-click="addWorkToItem(newWork)"/>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" value="Put" ng-click="submitItem(item)"/>
+            <input type="button" value="Cancel" ng-click="cancelModes()"/>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Тип сделки</th>
+            <th>Книга</th>
+            <th>Тип</th>
+            <th>Состояние</th>
+            <th>Пользователь</th>
+            <th>Действие</th>
+        </tr>
+        <tr ng-repeat="item in itemList">
+            <td>{{item.offerType.name}}</td>
+            <td>{{item.book.work.name}}</td>
+            <td>{{item.book.bookType.name}}</td>
+            <td>{{item.book.bookCondition.name}}</td>
+            <td>{{item.user.login}}</td>
+            <td>
+                <div>
+                    <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
+                    <input type="button" value="Delete" ng-click="deleteItem(item)"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>

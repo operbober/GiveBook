@@ -1,0 +1,24 @@
+<form name="loginForm">
+
+    <table style="min-width: 30%; max-width: 50%">
+        <tr>
+            <td>Логин:</td>
+            <td>
+                <label>
+                    <input id="login" type="text" ng-model="credentials.login" required/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td>
+                <label>
+                    <input id="password" type="password" ng-model="credentials.password" required/>
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" value="Authorise" ng-click="authorise()"/>
+
+</form>
