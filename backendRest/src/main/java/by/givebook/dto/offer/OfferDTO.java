@@ -1,6 +1,8 @@
 package by.givebook.dto.offer;
 
 import by.givebook.entities.account.User;
+import by.givebook.entities.offer.Book;
+import by.givebook.entities.offer.Offer;
 import by.givebook.entities.offer.OfferType;
 
 /**
@@ -15,6 +17,11 @@ public class OfferDTO {
     private OfferType offerType;
     private OfferBookDTO offerBookDTO;
     private User user;
+
+    public Offer toOffer(){
+        Book book = offerBookDTO.toBook();
+        return new Offer(book, user, offerType);
+    }
 
     public OfferType getOfferType() {
         return offerType;

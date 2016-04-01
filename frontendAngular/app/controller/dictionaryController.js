@@ -49,8 +49,8 @@ app.controller('dictionaryController', ['$scope', '$route', 'dictionaryService',
              $scope.mode = false;
              loadItems();
         });
-
     };
+
     $scope.onDeleteClick = function(itemForDelete) {
         dictionaryService.deleteItem(uri, itemForDelete).success(function (data) {
             loadItems();

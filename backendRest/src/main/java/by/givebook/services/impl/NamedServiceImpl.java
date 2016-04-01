@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by operb_000 on 09.03.2016.
  */
-public abstract class NamedServiceImpl<E extends NamedEntity> extends SimpleServiceImpl<E> implements NamedService<E>{
+public abstract class NamedServiceImpl<E extends NamedEntity, R extends NamedRepository<E>> extends SimpleServiceImpl<E, R> implements NamedService<E>{
 
     @Autowired
-    NamedRepository<E> repository;
+     protected R repository;
 
     @Override
     public E getByName(String name) {

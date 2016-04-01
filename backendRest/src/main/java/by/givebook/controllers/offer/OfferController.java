@@ -25,6 +25,6 @@ public class OfferController extends GenericController<Offer, OfferService> {
 
     @RequestMapping(value = "/addOffer", method = RequestMethod.PUT)
     private void save(@RequestBody OfferDTO offerDTO) {
-        service.save(offerDTO);
+        service.save(offerDTO.toOffer());
     }
 }

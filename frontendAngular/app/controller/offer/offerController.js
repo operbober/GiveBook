@@ -11,13 +11,9 @@ var bookTypesUri = '/bookTypes/';
 var bookConditionsUri = '/bookConditions/';
 var bookLanguagesUri = '/bookLanguages/';
 var usersUri = '/users/';
+
 var itemTemplate = {
-    offerBookDTO:{
-        bookType:{},
-        bookCondition:{},
-        bookLanguage:{},
-        workListDTO:[]
-    }
+    offerBookDTO:{}
 };
 
 app.controller('offerController', function ($scope, $http, $controller) {
@@ -33,11 +29,17 @@ app.controller('offerController', function ($scope, $http, $controller) {
     $scope.newWork = {authorListDTO: []};
 
     $scope.addAuthorToWork = function (authorForPut) {
+        if ($scope.newWork.authorListDTO === undefined){
+            $scope.newWork.authorListDTO = [];
+        }
         $scope.newWork.authorListDTO.push(authorForPut);
         $scope.newAuthor = {};
     };
 
     $scope.addWorkToItem = function (workForPut) {
+        if ($scope.item.offerBookDTO.workListDTO === undefined){
+            $scope.item.offerBookDTO.workListDTO = [];
+        }
         $scope.item.offerBookDTO.workListDTO.push(workForPut);
         $scope.newWork = {authorListDTO: []};
     };
@@ -76,7 +78,7 @@ app.controller('offerController', function ($scope, $http, $controller) {
     $scope.submitItem = function(itemForPut) {
         itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
         var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
+            $scope.cancelModes();
         });
-        $scope.cancelModes();
     };
 });

@@ -7,7 +7,4 @@ import by.givebook.services.SimpleService;
 /**
  * Created by FruityDevil on 05.03.2016.
  */
-public interface OfferService extends SimpleService<Offer> {
-
-    void save(OfferDTO offerDTO);
-}
+public interface OfferService extends SimpleService<Offer> {}

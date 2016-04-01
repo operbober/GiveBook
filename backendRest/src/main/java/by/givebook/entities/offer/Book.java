@@ -5,6 +5,7 @@ import by.givebook.entities.IdEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -13,9 +14,12 @@ import java.util.List;
 @Entity
 @Table
 public class Book extends IdEntity {
-    @ManyToOne
-    @JoinColumn(name = "work_id")
-    private Work work;
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "book_work",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns= @JoinColumn(name = "work_id"))
+    private List<Work> works;
 
     @ManyToOne
     @JoinColumn(name = "language_id")
@@ -33,12 +37,22 @@ public class Book extends IdEntity {
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<Offer> offers;
 
-    public Work getWork() {
-        return work;
+    public Book() {
     }
 
-    public void setWork(Work work) {
-        this.work = work;
+    public Book(List<Work> works, BookLanguage bookLanguage, BookType bookType, BookCondition bookCondition) {
+        this.works = works;
+        this.bookLanguage = bookLanguage;
+        this.bookType = bookType;
+        this.bookCondition = bookCondition;
+    }
+
+    public List<Work> getWorks() {
+        return works;
+    }
+
+    public void setWorks(List<Work> works) {
+        this.works = works;
     }
 
     public BookLanguage getBookLanguage() {

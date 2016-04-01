@@ -3,10 +3,7 @@ package by.givebook.entities.offer;
 import by.givebook.entities.account.User;
 import by.givebook.entities.IdEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by operb_000 on 29.02.2016.
@@ -26,6 +23,15 @@ public class Offer extends IdEntity {
     @ManyToOne
     @JoinColumn(name = "offer_type_id")
     private OfferType offerType;
+
+    public Offer() {
+    }
+
+    public Offer(Book book, User user, OfferType offerType) {
+        this.book = book;
+        this.user = user;
+        this.offerType = offerType;
+    }
 
     public Book getBook() {
         return book;

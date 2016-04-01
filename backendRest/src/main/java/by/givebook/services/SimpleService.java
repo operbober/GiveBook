@@ -1,5 +1,6 @@
 package by.givebook.services;
 
+import by.givebook.entities.library.Work;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,5 @@ public interface SimpleService<E> {
     E get(Long id);
     List<E> getAll();
     void delete(Long id);
-    void save(E entity);
+    E save(E entity);
 }

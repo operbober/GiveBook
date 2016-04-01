@@ -26,6 +26,14 @@ public class Author extends IdEntity {
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
     private List<Work> works;
 
+    public Author() {}
+
+    public Author(String lastName, String firstName, String middleName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
+    }
+
     public String getLastName() {
         return lastName;
     }
