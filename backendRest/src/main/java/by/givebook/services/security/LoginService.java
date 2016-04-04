@@ -11,5 +11,7 @@ import by.givebook.entities.account.User;
  */
 public interface LoginService {
 
-    public User isAuthenticated(UserLoginDTO userLoginDTO);
+    public Boolean isAuthenticated(UserLoginDTO userLoginDTO);
+
+    public String getTokenForUser(UserLoginDTO userLoginDTO, String ipAddress);
 }

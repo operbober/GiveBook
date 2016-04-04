@@ -1,8 +1,10 @@
 package by.givebook.controllers.security;
 
+import by.givebook.dto.security.TokenDTO;
 import by.givebook.dto.security.UserLoginDTO;
 import by.givebook.entities.account.User;
 import by.givebook.services.security.LoginService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -27,8 +30,10 @@ public class LoginController implements Filter {
     private LoginService service;
 
     @RequestMapping(method = RequestMethod.POST)
-    private User authenticate(@RequestBody UserLoginDTO userLoginDTO) {
-        return service.isAuthenticated(userLoginDTO);
+    private TokenDTO authenticate(@RequestBody UserLoginDTO userLoginDTO, HttpServletRequest request) {
+        return service.isAuthenticated(userLoginDTO)
+                ? new TokenDTO(service.getTokenForUser(userLoginDTO, request.getRemoteAddr()))
+                : null;
     }
 
     @Override

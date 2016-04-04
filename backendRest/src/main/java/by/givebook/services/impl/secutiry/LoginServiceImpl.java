@@ -4,6 +4,7 @@ import by.givebook.dto.security.UserLoginDTO;
 import by.givebook.entities.account.User;
 import by.givebook.repositories.account.UserRepository;
 import by.givebook.services.security.LoginService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class LoginServiceImpl implements LoginService {
     UserRepository userRepository;
 
     @Override
-    public User isAuthenticated(UserLoginDTO userLoginDTO) {
+    public Boolean isAuthenticated(UserLoginDTO userLoginDTO) {
 
         User user = userRepository.findByLoginIgnoreCase(userLoginDTO.getLogin());
 
@@ -28,6 +29,11 @@ public class LoginServiceImpl implements LoginService {
             return null;
         }
 
-        return userLoginDTO.getPassword().equals(user.getPassword()) ? user : null;
+        return userLoginDTO.getPassword().equals(user.getPassword());
+    }
+
+    @Override
+    public String getTokenForUser(UserLoginDTO userLoginDTO, String ipAddress) {
+        return DigestUtils.sha1Hex(userLoginDTO.getLogin() + userLoginDTO.getPassword() + ipAddress);
     }
 }

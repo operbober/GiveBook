@@ -9,7 +9,7 @@
                 <input id="name" type="text" ng-model="item.name" required/>
             </label>
             <br>
-            <input type="button" value="Put" ng-click="onSubmitClick(item)"/>
+            <input type="button" value="Put" ng-click="onActionSubmit(item)"/>
             <input type="button" value="Cancel" ng-click="cancelModes()"/>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <td ng-switch="mode">
                 <div ng-switch-when=false>
                     <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
-                    <input type="button" value="Delete" ng-click="onDeleteClick(item)"/>
+                    <input type="button" value="Delete" ng-click="onActionDelete(item)"/>
                 </div>
             </td>
         </tr>

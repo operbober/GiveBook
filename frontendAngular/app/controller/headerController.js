@@ -11,17 +11,16 @@
 app.controller('headerController', ['$scope', function ($scope) {
 
     $scope.isAuthenticated = function() {
-  //      alert(sessionStorage.getItem('currentUser'));
-        return sessionStorage.getItem('currentUser') !== null
-            ? JSON.parse(sessionStorage.getItem('currentUser')) !== ''
+        return sessionStorage.getItem('token') !== null
+            ? JSON.parse(sessionStorage.getItem('token')) !== ''
             : false;
     };
 
-    $scope.getCurrentUser = function() {
-        return JSON.parse(sessionStorage.getItem('currentUser'));
+    $scope.getToken = function() {
+        return JSON.parse(sessionStorage.getItem('token'));
     };
 
     $scope.logOut = function() {
-        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('token');
     };
 }]);
