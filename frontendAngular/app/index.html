@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="giveBook">
+<head>
+    <meta charset="UTF-8">
+    <title>Give Book Bitch!</title>
+
+    <link rel="stylesheet" href="css/app.css"/>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="properties/globalProperties.js"></script>
+
+    <script src="app.js"></script>
+    <script src="service/dictionaryService.js"></script>
+    <script src="controller/dictionaryController.js"></script>
+
+    <script src="directive/topMenuDirective.js"></script>
+    <script src="controller/headerController.js"></script>
+    <script src="controller/security/loginController.js"></script>
+    <script src="controller/offer/offerController.js"></script>
+</head>
+<body>
+<top-menu>
+
+</top-menu>
+
+<div ng-view id="centerContent" class="pageCentered"></div>
+
+</body>
+</html>

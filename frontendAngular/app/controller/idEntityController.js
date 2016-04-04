@@ -38,15 +38,7 @@ app.controller('IdEntityController', function ($scope, $http) {
         $scope.getAll();
     };
 
-    $scope.submitItem = function(itemForPut) {
-        var httpRequest = $http.put(serverUrl + uri, itemForPut).success(function(data, status) {
-        });
-        $scope.cancelModes();
-    };
 
-    $scope.deleteItem = function(itemForEdit) {
-        var httpRequest = $http.delete(serverUrl + uri + itemForEdit.id, itemForEdit).success(function(data, status) {
-            $scope.getAll();
-        });
-    };
+
+
 });

@@ -1,0 +1,10 @@
+{
+    "name": "giveBook",
+    "description": "Book crossing website",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "angular": "1.5.3",
+        "angular-route": "1.5.3"
+    }
+}

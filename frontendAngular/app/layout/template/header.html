@@ -1,0 +1,22 @@
+<div>
+    <div ng-switch="isAuthenticated()">
+        <div ng-switch-default>
+            <a href="#/login">Log in</a>
+            <hr/>
+        </div>
+        <div ng-switch-when=true>
+            <p>{{getCurrentUser().login}}</p>
+            <input type="button" value="Log out" ng-click="logOut()"/>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <a href="#/offerTypes">Offer types</a>
+        <a href="#/bookTypes">Book types</a>
+        <a href="#/bookConditions">Book conditions</a>
+        <a href="#/genres">Genres</a>
+        <br>
+        <a href="#/offers" ng-show="isAuthenticated()">Offers</a>
+        <hr/>
+    </div>
+</div>

@@ -11,12 +11,13 @@ var bookTypesUri = '/bookTypes/';
 var bookConditionsUri = '/bookConditions/';
 var bookLanguagesUri = '/bookLanguages/';
 var usersUri = '/users/';
+
 var itemTemplate = {
-	bookDTO:{}
+    offerBookDTO:{}
 };
 
-app.controller('OfferController', function ($scope, $http, $controller) {
-    $controller('IdEntityController', {$scope: $scope});
+app.controller('offerController', function ($scope, $http, $controller) {
+    $controller('dictionaryController', {$scope: $scope});
 
     $scope.offerTypes = [];
     $scope.bookTypes = [];
@@ -25,22 +26,22 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     $scope.users = [];
 
     $scope.newAuthor = {};
-    $scope.newWork = {};
+    $scope.newWork = {authorListDTO: []};
 
     $scope.addAuthorToWork = function (authorForPut) {
-		if ($scope.newWork.authorListDTO === undefined){
-			$scope.newWork.authorListDTO = new Array;
-		}
+        if ($scope.newWork.authorListDTO === undefined){
+            $scope.newWork.authorListDTO = [];
+        }
         $scope.newWork.authorListDTO.push(authorForPut);
         $scope.newAuthor = {};
     };
 
     $scope.addWorkToItem = function (workForPut) {
-		if ($scope.item.bookDTO.workListDTO === undefined){
-			$scope.item.bookDTO.workListDTO = new Array;
-		}
-        $scope.item.bookDTO.workListDTO.push(workForPut);
-        $scope.newWork = {};
+        if ($scope.item.offerBookDTO.workListDTO === undefined){
+            $scope.item.offerBookDTO.workListDTO = [];
+        }
+        $scope.item.offerBookDTO.workListDTO.push(workForPut);
+        $scope.newWork = {authorListDTO: []};
     };
 
     $scope.loadAllLists = function () {
@@ -48,7 +49,6 @@ app.controller('OfferController', function ($scope, $http, $controller) {
         $scope.getBookTypes();
         $scope.getBookConditions();
         $scope.getBookLanguages();
-        $scope.getUsers();
     };
 
     $scope.getOfferTypes = function () {
@@ -76,15 +76,9 @@ app.controller('OfferController', function ($scope, $http, $controller) {
     };
 
     $scope.submitItem = function(itemForPut) {
-        //itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
+        itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
         var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
-        });
-        $scope.cancelModes();
-    };
-
-    $scope.getUsers = function () {
-        var httpRequest = $http.get(serverUrl + usersUri).success(function (data, status) {
-            $scope.users = data;
+            $scope.cancelModes();
         });
     };
 });

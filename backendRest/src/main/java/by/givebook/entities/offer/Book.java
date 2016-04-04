@@ -16,7 +16,7 @@ import java.util.List;
 public class Book extends IdEntity {
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "books_works",
+    @JoinTable(name = "book_work",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns= @JoinColumn(name = "work_id"))
     private List<Work> works;

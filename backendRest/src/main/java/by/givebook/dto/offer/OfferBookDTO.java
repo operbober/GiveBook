@@ -16,13 +16,21 @@ import java.util.stream.Collectors;
  * @version 1.0
  * @since 09.03.2016
  */
-public class BookDTO {
+public class OfferBookDTO {
 
     private BookType bookType;
     private BookCondition bookCondition;
     private BookLanguage bookLanguage;
 
     private List<WorkDTO> workListDTO;
+
+    public Book toBook(){
+        List<Work> works = null;
+        if (workListDTO != null) {
+            works = workListDTO.stream().map(WorkDTO::toWork).collect(Collectors.toList());
+        }
+        return new Book(works, bookLanguage, bookType, bookCondition);
+    }
 
     public BookType getBookType() {
         return bookType;
@@ -38,13 +46,5 @@ public class BookDTO {
 
     public List<WorkDTO> getWorkListDTO() {
         return workListDTO;
-    }
-
-    public Book toBook(){
-        List<Work> works = null;
-        if (workListDTO != null) {
-            works = workListDTO.stream().map(WorkDTO::toWork).collect(Collectors.toList());
-        }
-        return new Book(works, bookLanguage, bookType, bookCondition);
     }
 }
