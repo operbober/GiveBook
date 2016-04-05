@@ -11,7 +11,7 @@ app.controller('loginController', function ($scope, $http) {
     $scope.authorise = function() {
         var httpRequest = $http.post(serverUrl + uri, $scope.credentials).success(function(data, status) {
             if (data != '') {
-                sessionStorage.setItem('currentUser', JSON.stringify(data));
+                sessionStorage.setItem('token', JSON.stringify(data));
             } else {
                 alert('Auth error!');
             }

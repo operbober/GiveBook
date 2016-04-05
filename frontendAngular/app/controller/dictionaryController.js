@@ -44,14 +44,14 @@ app.controller('dictionaryController', ['$scope', '$route', 'dictionaryService',
 
     $scope.onLoad = loadItems;
 
-    $scope.onSubmitClick = function(itemForPut) {
+    $scope.onActionSubmit = function(itemForPut) {
         dictionaryService.submitItem(uri, itemForPut).success(function (data) {
              $scope.mode = false;
              loadItems();
         });
     };
 
-    $scope.onDeleteClick = function(itemForDelete) {
+    $scope.onActionDelete = function(itemForDelete) {
         dictionaryService.deleteItem(uri, itemForDelete).success(function (data) {
             loadItems();
         });
