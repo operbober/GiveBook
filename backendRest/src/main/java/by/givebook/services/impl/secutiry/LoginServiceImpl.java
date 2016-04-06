@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String getTokenForUser(UserLoginDTO userLoginDTO, String ipAddress) {
+    public String getKeyForToken(UserLoginDTO userLoginDTO, String ipAddress) {
         return DigestUtils.sha1Hex(userLoginDTO.getLogin() + userLoginDTO.getPassword() + ipAddress);
     }
 }
