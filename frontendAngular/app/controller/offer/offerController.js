@@ -5,43 +5,56 @@
  * @version 1.0
  * @date 04.03.2016
  */
-var uri = '/offers/';
 var offerTypesUri = '/offerTypes/';
 var bookTypesUri = '/bookTypes/';
 var bookConditionsUri = '/bookConditions/';
 var bookLanguagesUri = '/bookLanguages/';
-var usersUri = '/users/';
 
 var itemTemplate = {
-    offerBookDTO:{}
+    book:{}
 };
 
-app.controller('offerController', function ($scope, $http, $controller) {
+var uri = '/offers/';
+
+app.controller('offerController', ['$scope', '$http', '$controller', 'offerService', function ($scope, $http, $controller, offerService) {
     $controller('dictionaryController', {$scope: $scope});
 
     $scope.offerTypes = [];
     $scope.bookTypes = [];
     $scope.bookConditions = [];
     $scope.bookLanguages = [];
-    $scope.users = [];
 
     $scope.newAuthor = {};
     $scope.newWork = {authorListDTO: []};
 
     $scope.addAuthorToWork = function (authorForPut) {
-        if ($scope.newWork.authorListDTO === undefined){
-            $scope.newWork.authorListDTO = [];
+        if ($scope.newWork.authors === undefined){
+            $scope.newWork.authors = [];
         }
-        $scope.newWork.authorListDTO.push(authorForPut);
+        $scope.newWork.authors.push(authorForPut);
         $scope.newAuthor = {};
     };
 
     $scope.addWorkToItem = function (workForPut) {
-        if ($scope.item.offerBookDTO.workListDTO === undefined){
-            $scope.item.offerBookDTO.workListDTO = [];
+        if ($scope.item.book.works === undefined){
+            $scope.item.book.works = [];
         }
-        $scope.item.offerBookDTO.workListDTO.push(workForPut);
-        $scope.newWork = {authorListDTO: []};
+        $scope.item.book.works.push(workForPut);
+        $scope.newWork = {authors: []};
+    };
+
+    $scope.removeAuthorFromWork = function (authorForRemove) {
+        var index = $scope.newWork.authors.indexOf(authorForRemove);
+        if(index != -1) {
+            $scope.newWork.authors.splice(index, 1);
+        }
+    };
+
+    $scope.removeWorkFromItem = function (workForRemove) {
+        var index = $scope.item.book.works.indexOf(workForRemove);
+        if(index != -1) {
+            $scope.item.book.works.splice(index, 1);
+        }
     };
 
     $scope.loadAllLists = function () {
@@ -76,9 +89,25 @@ app.controller('offerController', function ($scope, $http, $controller) {
     };
 
     $scope.submitItem = function(itemForPut) {
-        itemForPut.user = JSON.parse(sessionStorage.getItem('currentUser'));
-        var httpRequest = $http.put(serverUrl + uri + 'addOffer', itemForPut).success(function(data, status) {
+        itemForPut.user = null;//JSON.parse(sessionStorage.getItem('currentUser'));
+        var httpRequest = $http.put(serverUrl + uri, itemForPut).success(function(data, status) {
+            itemTemplate.book.works = undefined;
             $scope.cancelModes();
         });
     };
-});
+
+    $scope.convertAuthorToString = function(author) {
+
+        return offerService.convertAuthorToString(author);
+    };
+
+    $scope.convertWorkToString = function(work) {
+
+        return offerService.convertWorkToString(work);
+    };
+
+    $scope.convertWorksListToString = function(works) {
+
+        return offerService.convertBookWorksToString(works);
+    }
+}]);

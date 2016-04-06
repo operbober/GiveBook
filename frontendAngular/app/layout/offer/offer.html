@@ -10,8 +10,8 @@
                     <td>Тип книги:</td>
                     <td>
                         <select id="bookType"
-                                ng-model="item.offerBookDTO.bookType"
-                                ng-options="bookType.name for bookType in bookTypes"
+                                ng-model="item.book.bookType"
+                                ng-options="bookType.name for bookType in bookTypes track by bookType.id"
                                 required>
                         </select>
                     </td>
@@ -20,9 +20,9 @@
                     <td>Состояние книги:</td>
                     <td>
                         <select id="bookCondition"
-                                ng-model="item.offerBookDTO.bookCondition"
+                                ng-model="item.book.bookCondition"
 
-                                ng-options="bookCondition.name for bookCondition in bookConditions"
+                                ng-options="bookCondition.name for bookCondition in bookConditions track by bookCondition.id"
                                 required>
                         </select>
                     </td>
@@ -31,9 +31,9 @@
                     <td>Язык книги:</td>
                     <td>
                         <select id="bookLanguage"
-                                ng-model="item.offerBookDTO.bookLanguage"
+                                ng-model="item.book.bookLanguage"
 
-                                ng-options="bookLanguage.name for bookLanguage in bookLanguages"
+                                ng-options="bookLanguage.name for bookLanguage in bookLanguages track by bookLanguage.id"
                                 required>
                         </select>
                     </td>
@@ -46,8 +46,8 @@
                 <tr>
                     <td>Произведение(я):</td>
                     <td>
-                        <label ng-repeat="work in item.offerBookDTO.workListDTO">
-                            {{work.workTitle}}
+                        <label ng-repeat="work in item.book.works" ng-click="removeWorkFromItem(work)">
+                            {{convertWorkToString(work)}}
                         </label>
                     </td>
                 </tr>
@@ -60,15 +60,15 @@
                     <td>Название произведения:</td>
                     <td>
                         <label>
-                            <input id="workTitle" type="text" ng-model="newWork.workTitle" required/>
+                            <input id="workTitle" type="text" ng-model="newWork.name" required/>
                         </label>
                     </td>
                 </tr>
                 <tr>
                     <td>Автор(ы):</td>
                     <td>
-                        <label ng-repeat="author in newWork.authorListDTO">
-                            {{author.lastName}}
+                        <label ng-repeat="author in newWork.authors" ng-click="removeAuthorFromWork(author)">
+                            {{convertAuthorToString(author)}}
                         </label>
                     </td>
                 </tr>
@@ -96,14 +96,16 @@
             <th>Книга</th>
             <th>Тип</th>
             <th>Состояние</th>
+            <th>Язык</th>
             <th>Пользователь</th>
             <th>Действие</th>
         </tr>
         <tr ng-repeat="item in itemList">
             <td>{{item.offerType.name}}</td>
-            <td>{{item.book.work.name}}</td>
+            <td>{{convertWorksListToString (item.book.works)}}</td>
             <td>{{item.book.bookType.name}}</td>
             <td>{{item.book.bookCondition.name}}</td>
+            <td>{{item.book.bookLanguage.name}}</td>
             <td>{{item.user.login}}</td>
             <td>
                 <div>

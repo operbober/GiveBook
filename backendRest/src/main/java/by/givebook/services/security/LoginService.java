@@ -13,5 +13,5 @@ public interface LoginService {
 
     public Boolean isAuthenticated(UserLoginDTO userLoginDTO);
 
-    public String getTokenForUser(UserLoginDTO userLoginDTO, String ipAddress);
+    public String getKeyForToken(UserLoginDTO userLoginDTO, String ipAddress);
 }
