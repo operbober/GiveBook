@@ -14,10 +14,10 @@ public class AuthorServiceImpl extends SimpleServiceImpl<Author, AuthorRepositor
 
     @Override
     public Author save(Author entity) {
-        if (repository.getByLastNameAndFirstNameAndMiddleNameIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName()) == null){
+        if (repository.findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName()) == null){
             super.save(entity);
         } else {
-            entity = repository.getByLastNameAndFirstNameAndMiddleNameIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName());
+            entity = repository.findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName());
         }
         return entity;
     }

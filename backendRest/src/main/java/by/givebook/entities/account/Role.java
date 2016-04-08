@@ -1,6 +1,7 @@
 package by.givebook.entities.account;
 
 import by.givebook.entities.NamedEntity;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,4 +11,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "role")
-public class Role extends NamedEntity {}
+public class Role extends NamedEntity implements GrantedAuthority {
+    @Override
+    public String getAuthority() {
+        return getName();
+    }
+}

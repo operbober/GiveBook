@@ -11,5 +11,5 @@ import by.givebook.repositories.SimpleRepository;
  * @since 02.03.2016
  */
 public interface AuthorRepository extends SimpleRepository<Author> {
-    Author getByLastNameAndFirstNameAndMiddleNameIgnoreCase(String lastName, String firstName, String middleName);
+    Author findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(String lastName, String firstName, String middleName);
 }
