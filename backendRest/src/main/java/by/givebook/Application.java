@@ -6,6 +6,7 @@ package by.givebook;
 import by.givebook.entities.account.User;
 import by.givebook.entities.library.Genre;
 import by.givebook.entities.offer.*;
+import by.givebook.repositories.NamedRepository;
 import by.givebook.repositories.account.UserRepository;
 import by.givebook.repositories.library.GenreRepository;
 import by.givebook.repositories.offer.*;
@@ -38,27 +39,27 @@ public class Application {
 
     @Bean
     public NamedService<Genre> genreService() {
-        return new NamedServiceImpl<Genre, GenreRepository>() { };
+        return new NamedServiceImpl<Genre, NamedRepository<Genre>>() { };
     }
 
     @Bean
     public NamedService<BookCondition> bookConditionService() {
-        return new NamedServiceImpl<BookCondition, BookConditionRepository>() { };
+        return new NamedServiceImpl<BookCondition, NamedRepository<BookCondition>>() { };
     }
 
     @Bean
     public NamedService<BookType> bookTypeService() {
-        return new NamedServiceImpl<BookType, BookTypeRepository>() { };
+        return new NamedServiceImpl<BookType, NamedRepository<BookType>>() { };
     }
 
     @Bean
     public NamedService<BookLanguage> bookLanguageService() {
-        return new NamedServiceImpl<BookLanguage, BookLanguageRepository>() { };
+        return new NamedServiceImpl<BookLanguage, NamedRepository<BookLanguage>>() { };
     }
 
     @Bean
     public NamedService<OfferType> offerTypeService() {
-        return new NamedServiceImpl<OfferType, OfferTypeRepository>() { };
+        return new NamedServiceImpl<OfferType, NamedRepository<OfferType>>() { };
     }
 }
 
