@@ -5,31 +5,27 @@ package by.givebook;
  */
 import by.givebook.entities.account.User;
 import by.givebook.entities.library.Genre;
-import by.givebook.entities.offer.*;
 import by.givebook.repositories.NamedRepository;
+import by.givebook.entities.offer.BookCondition;
+import by.givebook.entities.offer.BookLanguage;
+import by.givebook.entities.offer.BookType;
+import by.givebook.entities.offer.OfferType;
 import by.givebook.repositories.account.UserRepository;
-import by.givebook.repositories.library.GenreRepository;
-import by.givebook.repositories.offer.*;
 import by.givebook.services.NamedService;
 import by.givebook.services.SimpleService;
 import by.givebook.services.impl.NamedServiceImpl;
 import by.givebook.services.impl.SimpleServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
-@EnableJpaRepositories(value = "by.givebook.repositories")
-@ComponentScan
+@SpringBootApplication
 public class Application {
+
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
     }
-
 
     /*BEANS FOR SERVICES*/
     @Bean

@@ -26,9 +26,8 @@ public class User extends IdEntity{
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "users_roles",
+    @JoinTable(name = "user_role",
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
@@ -36,6 +35,16 @@ public class User extends IdEntity{
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Offer> offers;
+
+    public User(){}
+
+    public User(String login, String password, String email, Person person, Set<Role> roles) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.person = person;
+        this.roles = roles;
+    }
 
     public String getLogin() {
         return login;
