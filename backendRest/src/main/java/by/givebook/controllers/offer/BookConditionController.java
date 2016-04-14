@@ -2,7 +2,7 @@ package by.givebook.controllers.offer;
 
 import by.givebook.controllers.GenericController;
 import by.givebook.entities.offer.BookCondition;
-import by.givebook.services.SimpleService;
+import by.givebook.services.NamedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/bookConditions")
-public class BookConditionController extends GenericController<BookCondition,SimpleService<BookCondition>> implements javax.servlet.Filter {
+public class BookConditionController extends GenericController<BookCondition, NamedService<BookCondition>> {
 
     @Autowired
-    public BookConditionController(@Qualifier("bookConditionService") SimpleService<BookCondition> service) {
+    public BookConditionController(@Qualifier("bookConditionService") NamedService<BookCondition> service) {
         super(service);
     }
 }
