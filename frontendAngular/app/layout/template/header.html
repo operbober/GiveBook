@@ -5,8 +5,8 @@
             <hr/>
         </div>
         <div ng-switch-when=true>
-            <p>{{getToken().login}}</p>
-            <input type="button" value="Log out" ng-click="logOut()"/>
+            <p>{{getAccessToken()}}</p>
+            <input type="button" value="Log out" ng-click="onLogOutClick()"/>
             <hr/>
         </div>
     </div>

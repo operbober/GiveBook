@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="css/app.css"/>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
     <script src="properties/globalProperties.js"></script>
 
-    <script src="app.js"></script>
-    <script src="service/dictionaryService.js"></script>
-    <script src="service/offerService.js"></script>
-    <script src="controller/dictionaryController.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/injector/authInjector.js"></script>
 
-    <script src="directive/topMenuDirective.js"></script>
-    <script src="controller/headerController.js"></script>
-    <script src="controller/security/loginController.js"></script>
-    <script src="controller/offer/offerController.js"></script>
+    <script src="js/service/authService.js"></script>
+    <script src="js/service/dictionaryService.js"></script>
+    <script src="js/service/offerService.js"></script>
+    <script src="js/service/securityService.js"></script>
+
+    <script src="js/directive/headerDirective.js"></script>
+
+    <script src="js/controller/offer/offerController.js"></script>
+    <script src="js/controller/security/loginController.js"></script>
+    <script src="js/controller/template/dictionaryController.js"></script>
+    <script src="js/controller/template/headerController.js"></script>
 </head>
 <body>
-<top-menu>
+<header>
 
-</top-menu>
+</header>
 
 <div ng-view id="centerContent" class="pageCentered"></div>
 

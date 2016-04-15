@@ -2,7 +2,6 @@ package by.givebook.controllers.offer;
 
 import by.givebook.controllers.GenericController;
 import by.givebook.entities.offer.BookLanguage;
-import by.givebook.entities.offer.OfferType;
 import by.givebook.services.NamedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

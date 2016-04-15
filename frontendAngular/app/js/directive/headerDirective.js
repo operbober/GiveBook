@@ -5,9 +5,9 @@
  * @version 1.0
  * @date 30.03.2016
  */
-directives.directive('topMenu', function () {
+directives.directive('header', function () {
     return {
-        templateUrl: 'layout/template/header.html',
+        templateUrl: '../../layout/template/header.html',
         controller: 'headerController'
     }
 });
