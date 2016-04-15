@@ -7,41 +7,44 @@
  */
 'use strict';
 
-var app = angular.module('giveBook', ['ngRoute', 'giveBook.services', 'giveBook.directives']);
+var app = angular.module('giveBook', ['ngRoute', 'ngCookies', 'giveBook.services', 'giveBook.directives']);
 var services = angular.module('giveBook.services', []);
 var directives = angular.module('giveBook.directives', []);
 
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
     $routeProvider
         .when('/login', {
-            templateUrl: 'layout/security/login.html',
+            templateUrl: '../layout/security/login.html',
             controller: 'loginController',
             uri: '/login/'
         })
         .when('/offers', {
-            templateUrl: 'layout/offer/offer.html',
+            templateUrl: '../layout/offer/offer.html',
             controller: 'offerController',
             uri: '/offers/'
         })
         .when('/offerTypes', {
-            templateUrl: 'layout/template/dictionaryTable.html',
+            templateUrl: '../layout/template/dictionaryTable.html',
             controller: 'dictionaryController',
             uri: '/offerTypes/'
         })
         .when('/bookTypes', {
-            templateUrl: 'layout/template/dictionaryTable.html',
+            templateUrl: '../layout/template/dictionaryTable.html',
             controller: 'dictionaryController',
             uri: '/bookTypes/'
         })
         .when('/bookConditions', {
-            templateUrl: 'layout/template/dictionaryTable.html',
+            templateUrl: '../layout/template/dictionaryTable.html',
             controller: 'dictionaryController',
             uri: '/bookConditions/'
         })
         .when('/genres', {
-            templateUrl: 'layout/template/dictionaryTable.html',
+            templateUrl: '../layout/template/dictionaryTable.html',
             controller: 'dictionaryController',
             uri: '/genres/'
-        })
+        });
+
+    $httpProvider.interceptors.push('authInjector');
+    $httpProvider.interceptors.push('commonInjector');
 }]);
