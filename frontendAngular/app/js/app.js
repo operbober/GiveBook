@@ -46,5 +46,4 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
         });
 
     $httpProvider.interceptors.push('authInjector');
-    $httpProvider.interceptors.push('commonInjector');
 }]);

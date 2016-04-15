@@ -15,4 +15,6 @@ app.controller('headerController', ['$scope', 'securityService', 'authService', 
     $scope.getAccessToken = securityService.getAccessToken;
 
     $scope.onLogOutClick = authService.logOut;
+
+    $scope.onRefreshClick = authService.refresh;
 }]);

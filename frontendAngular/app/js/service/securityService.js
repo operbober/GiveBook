@@ -17,6 +17,10 @@ services
 
             getAccessToken: function () {
                 return 'Bearer ' + $cookies.get('access_token');
+            },
+
+            getRefreshToken: function () {
+                return $cookies.get('refresh_token');
             }
         }
     }]);

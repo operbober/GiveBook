@@ -8,7 +8,7 @@
 'use strict';
 
 services
-    .factory('dictionaryService', ['$http', '$cookies', function($http, $cookies){
+    .factory('dictionaryService', ['$http', function($http){
 
         return {
             getAll: function(uri) {
@@ -20,7 +20,6 @@ services
 
             submitItem: function(uri, itemForPut) {
 
-                $http.defaults.headers.put['Authorization'] = 'Bearer ' + $cookies.get('access_token');
                 return $http.put(serverUrl + uri, itemForPut)
                     .success(function(data, status) {
                         return data;
@@ -29,7 +28,6 @@ services
 
             deleteItem: function(uri, itemForEdit) {
 
-                $http.defaults.headers.put['Authorization'] = 'Bearer ' + $cookies.get('access_token');
                 return $http.delete(serverUrl + uri + itemForEdit.id, itemForEdit)
                     .success(function(data, status) {
 
