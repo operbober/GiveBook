@@ -22,12 +22,8 @@ public class BookServiceImpl extends SimpleServiceImpl<Book, BookRepository> imp
     WorkService workService;
 
     @Override
-    @Transactional
-    public Book save(Book entity) {
-        for (int i = 0; i < entity.getWorks().size(); i++){
-            entity.getWorks().set(i, workService.save(entity.getWorks().get(i)));
-        }
-
-        return super.save(entity);
+    public void save(Book entity) {
+        entity.getWorks().replaceAll(workService::getOldOrCreateNew);
+        super.save(entity);
     }
 }

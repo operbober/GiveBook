@@ -10,15 +10,20 @@ import org.springframework.stereotype.Service;
  * Created by operb_000 on 11.03.2016.
  */
 @Service
-public class AuthorServiceImpl extends SimpleServiceImpl<Author, AuthorRepository> implements AuthorService{
+public class AuthorServiceImpl extends SimpleServiceImpl<Author, AuthorRepository> implements AuthorService {
 
     @Override
-    public Author save(Author entity) {
-        if (repository.findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName()) == null){
+    public Author getOldOrCreateNew(Author entity) {
+        Author storedAuthor = getByFullName(entity);
+        if (storedAuthor == null){
             super.save(entity);
-        } else {
-            entity = repository.findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(entity.getLastName(), entity.getFirstName(), entity.getMiddleName());
+            storedAuthor = getByFullName(entity);
         }
-        return entity;
+        return storedAuthor;
+    }
+
+    private Author getByFullName(Author entity){
+        return repository.findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase
+                (entity.getLastName(), entity.getFirstName(), entity.getMiddleName());
     }
 }

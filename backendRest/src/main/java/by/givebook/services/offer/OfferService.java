@@ -1,6 +1,5 @@
 package by.givebook.services.offer;
 
-import by.givebook.dto.offer.OfferDTO;
 import by.givebook.entities.offer.Offer;
 import by.givebook.services.SimpleService;
 

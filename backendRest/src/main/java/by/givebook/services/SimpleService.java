@@ -14,5 +14,5 @@ public interface SimpleService<E> {
     E get(Long id);
     List<E> getAll();
     void delete(Long id);
-    E save(E entity);
+    void save(E entity);
 }

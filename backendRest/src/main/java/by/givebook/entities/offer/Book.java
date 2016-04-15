@@ -14,6 +14,7 @@ import java.util.List;
 @Entity
 @Table
 public class Book extends IdEntity {
+
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "book_work",
@@ -37,53 +38,23 @@ public class Book extends IdEntity {
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<Offer> offers;
 
-    public Book() {
-    }
-
-    public Book(List<Work> works, BookLanguage bookLanguage, BookType bookType, BookCondition bookCondition) {
-        this.works = works;
-        this.bookLanguage = bookLanguage;
-        this.bookType = bookType;
-        this.bookCondition = bookCondition;
-    }
-
     public List<Work> getWorks() {
         return works;
-    }
-
-    public void setWorks(List<Work> works) {
-        this.works = works;
     }
 
     public BookLanguage getBookLanguage() {
         return bookLanguage;
     }
 
-    public void setBookLanguage(BookLanguage bookLanguage) {
-        this.bookLanguage = bookLanguage;
-    }
-
     public BookType getBookType() {
         return bookType;
-    }
-
-    public void setBookType(BookType bookType) {
-        this.bookType = bookType;
     }
 
     public BookCondition getBookCondition() {
         return bookCondition;
     }
 
-    public void setBookCondition(BookCondition bookCondition) {
-        this.bookCondition = bookCondition;
-    }
-
     public List<Offer> getOffers() {
         return offers;
-    }
-
-    public void setOffers(List<Offer> offers) {
-        this.offers = offers;
     }
 }

@@ -1,5 +1,6 @@
 package by.givebook.services.impl.library;
 
+import by.givebook.entities.library.Author;
 import by.givebook.entities.library.Work;
 import by.givebook.repositories.library.WorkRepository;
 import by.givebook.services.impl.SimpleServiceImpl;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,18 +24,15 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
     @Autowired
     AuthorService authorService;
 
-    @Override
     @Transactional
-    public Work save(Work entity) {
-        for (int i = 0; i < entity.getAuthors().size(); i++){
-            entity.getAuthors().set(i, authorService.save(entity.getAuthors().get(i)));
-        }
-
-        if (repository.findByNameAndAuthors(entity.getName(), entity.getAuthors()) == null){
+    @Override
+    public Work getOldOrCreateNew(Work entity) {
+        entity.getAuthors().replaceAll(authorService::getOldOrCreateNew);
+        Work storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors());
+        if (storedWork == null){
             super.save(entity);
-        } else {
-            entity = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors());
+            storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors());
         }
-        return entity;
+        return storedWork;
     }
 }

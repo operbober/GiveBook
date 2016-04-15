@@ -35,8 +35,7 @@ public abstract class SimpleServiceImpl<E extends IdEntity, R extends SimpleRepo
     }
 
     @Override
-    public E save(E entity) {
+    public void save(E entity) {
         repository.save(entity);
-        return null;
     }
 }

@@ -9,4 +9,7 @@ import java.util.List;
 /**
  * Created by operb_000 on 11.03.2016.
  */
-public interface WorkService extends SimpleService<Work>{}
+public interface WorkService extends SimpleService<Work> {
+
+    Work getOldOrCreateNew(Work entity);
+}
