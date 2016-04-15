@@ -13,7 +13,7 @@ app.controller('dictionaryController', ['$scope', '$route', 'dictionaryService',
 
     $scope.mode = false;
 
-    var uri = $route.current.$$route.uri;
+    $scope.uri = $route.current.$$route.uri;
 
     $scope.onActionAdd = function() {
         $scope.loadAllLists();
@@ -37,7 +37,7 @@ app.controller('dictionaryController', ['$scope', '$route', 'dictionaryService',
     };
 
     var loadItems = function() {
-        dictionaryService.getAll(uri).success(function (data) {
+        dictionaryService.getAll($scope.uri).success(function (data) {
             $scope.itemList = data;
         });
     };
@@ -45,14 +45,14 @@ app.controller('dictionaryController', ['$scope', '$route', 'dictionaryService',
     $scope.onLoad = loadItems;
 
     $scope.onActionSubmit = function(itemForPut) {
-        dictionaryService.submitItem(uri, itemForPut).success(function (data) {
+        dictionaryService.submitItem($scope.uri, itemForPut).success(function (data) {
              $scope.mode = false;
              loadItems();
         });
     };
 
     $scope.onActionDelete = function(itemForDelete) {
-        dictionaryService.deleteItem(uri, itemForDelete).success(function (data) {
+        dictionaryService.deleteItem($scope.uri, itemForDelete).success(function (data) {
             loadItems();
         });
     };

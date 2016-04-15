@@ -24,6 +24,11 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
             controller: 'offerController',
             uri: '/offers/'
         })
+        .when('/myOffers', {
+            templateUrl: '../layout/offer/offer.html',
+            controller: 'offerController',
+            uri: '/myOffers/'
+        })
         .when('/offerTypes', {
             templateUrl: '../layout/template/dictionaryTable.html',
             controller: 'dictionaryController',

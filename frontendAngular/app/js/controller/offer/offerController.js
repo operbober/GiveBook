@@ -14,7 +14,7 @@ var itemTemplate = {
     book:{}
 };
 
-var uri = '/offers/';
+//var uri = '/offers/';
 
 app.controller('offerController', ['$scope', '$http', '$controller', 'offerService', function ($scope, $http, $controller, offerService) {
     $controller('dictionaryController', {$scope: $scope});
@@ -89,8 +89,8 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
     };
 
     $scope.submitItem = function(itemForPut) {
-        itemForPut.user = null;//JSON.parse(sessionStorage.getItem('currentUser'));
-        var httpRequest = $http.put(serverUrl + uri, itemForPut).success(function(data, status) {
+        itemForPut.user = null;
+        var httpRequest = $http.put(serverUrl + $scope.uri, itemForPut).success(function(data, status) {
             itemTemplate.book.works = undefined;
             $scope.cancelModes();
         });

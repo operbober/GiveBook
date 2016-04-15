@@ -21,6 +21,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by FruityDevil on 05.03.2016.
  */
@@ -44,5 +46,12 @@ public class OfferServiceImpl extends SimpleServiceImpl<Offer, OfferRepository> 
 
         bookService.save(entity.getBook());
         super.save(entity);
+    }
+
+    @Override
+    public List<Offer> getMyOffers(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = userService.getUserByLogin(authentication.getName());
+        return repository.findByUser(currentUser);
     }
 }
