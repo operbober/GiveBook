@@ -13,10 +13,15 @@ import by.givebook.services.library.AuthorService;
 import by.givebook.services.library.WorkService;
 import by.givebook.services.offer.BookService;
 import by.givebook.services.offer.OfferService;
+import by.givebook.services.security.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by FruityDevil on 05.03.2016.
@@ -27,20 +32,26 @@ public class OfferServiceImpl extends SimpleServiceImpl<Offer, OfferRepository> 
     BookService bookService;
 
     @Autowired
-    @Qualifier("userService")
-    SimpleService<User> userSimpleService;
+    UserService userService;
 
     @Autowired
     @Qualifier("offerTypeService")
     SimpleService<OfferType> offerTypeSimpleService;
 
     @Override
-    @Transactional
-    public Offer save(Offer entity) {
-        entity.setUser(userSimpleService.get(1L));
+    public void save(Offer entity) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        entity.setUser(userService.getUserByLogin(authentication.getName()));
         entity.setOfferType(offerTypeSimpleService.get(1L));
 
         bookService.save(entity.getBook());
-        return super.save(entity);
+        super.save(entity);
+    }
+
+    @Override
+    public List<Offer> getMyOffers(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = userService.getUserByLogin(authentication.getName());
+        return repository.findByUser(currentUser);
     }
 }

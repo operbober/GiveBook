@@ -27,22 +27,22 @@ public abstract class GenericController<E extends IdEntity, S extends SimpleServ
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    private List<E> get() {
+    protected List<E> get() {
         return service.getAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    private E getById(@PathVariable("id") Long id) {
+    protected E getById(@PathVariable("id") Long id) {
         return service.get(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    private void addOrUpdate(@RequestBody E entity) {
+    protected void addOrUpdate(@RequestBody E entity) {
         service.save(entity);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") Long id) {
+    protected void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
 }
