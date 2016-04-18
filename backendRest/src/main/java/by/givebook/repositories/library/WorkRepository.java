@@ -1,11 +1,10 @@
 package by.givebook.repositories.library;
 
 import by.givebook.entities.library.Author;
-import by.givebook.entities.library.Genre;
 import by.givebook.entities.library.Work;
 import by.givebook.repositories.SimpleRepository;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.awt.print.Pageable;
 import java.util.List;
@@ -19,4 +18,7 @@ import java.util.List;
  */
 public interface WorkRepository extends SimpleRepository<Work> {
     Work findByNameAndAuthors(String name, List<Author> authors);
+
+    @Query(value = "Select w from Work w where w.name like %:title%")
+    List<Work> findByTitleIgnoreCase(@Param("title") String title);
 }

@@ -18,7 +18,6 @@ public interface AuthorRepository extends SimpleRepository<Author> {
 
     Author findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(String lastName, String firstName, String middleName);
 
-    @Query(value = "Select c from Author c where c.lastName like :lastName%")
-    List<Author> findByLastOrFirstNameIgnoreCase
-            (@Param("lastName") String lastName);
+    @Query(value = "Select a from Author a where a.lastName like :lastName%")
+    List<Author> findByLastNameIgnoreCase(@Param("lastName") String lastName);
 }

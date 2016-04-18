@@ -1,18 +1,14 @@
 package by.givebook.services.impl.library;
 
-import by.givebook.entities.library.Author;
 import by.givebook.entities.library.Work;
 import by.givebook.repositories.library.WorkRepository;
 import by.givebook.services.impl.SimpleServiceImpl;
 import by.givebook.services.library.AuthorService;
 import by.givebook.services.library.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,6 +19,11 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
 
     @Autowired
     AuthorService authorService;
+
+    @Override
+    public List<Work> getSearchResults(String title) {
+        return repository.findByTitleIgnoreCase(title);
+    }
 
     @Transactional
     @Override

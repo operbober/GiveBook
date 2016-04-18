@@ -26,7 +26,7 @@ public class AuthorServiceImpl extends SimpleServiceImpl<Author, AuthorRepositor
 
     @Override
     public List<Author> getSearchResults(String lastName) {
-        return repository.findByLastOrFirstNameIgnoreCase(lastName);
+        return repository.findByLastNameIgnoreCase(lastName);
     }
 
     private Author getByFullName(Author entity){

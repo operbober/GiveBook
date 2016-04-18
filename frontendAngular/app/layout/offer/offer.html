@@ -51,17 +51,28 @@
                         </label>
                     </td>
                 </tr>
-                <tr>
+
+                <tr ng-show="worksQueryResult !== []">
                     <td colspan="2">
-                        <hr/>
+
+                        <ul>
+                            <li ng-repeat="work in worksQueryResult" ng-click="addWorkToItem(work)">
+                                {{convertWorkToString(work)}}
+                            </li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
                     <td>Название произведения:</td>
                     <td>
                         <label>
-                            <input id="workTitle" type="text" ng-model="newWork.name" required/>
+                            <input id="workTitle" type="text" ng-model="newWork.name" ng-keyup="worksLiveSearch(newWork.name)" required/>
                         </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr/>
                     </td>
                 </tr>
                 <tr>
