@@ -33,6 +33,7 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
         }
         $scope.newWork.authors.push(authorForPut);
         $scope.newAuthor = {};
+        $scope.authorsQueryResult = [];
     };
 
     $scope.addWorkToItem = function (workForPut) {
@@ -109,5 +110,22 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
     $scope.convertWorksListToString = function(works) {
 
         return offerService.convertBookWorksToString(works);
+    };
+
+    $scope.authorsQueryResult = [];
+    $scope.authorsLiveSearch = function(lastName) {
+
+        if (lastName !== '' && lastName !== undefined) {
+            if (firstName === undefined) {
+                firstName = '';
+            }
+            var req = {
+                method: 'GET',
+                url: serverUrl + '/authors/search?lastName=' + lastName
+            };
+            $http(req).then(function (response) {
+                $scope.authorsQueryResult = response.data;
+            });
+        }
     }
 }]);

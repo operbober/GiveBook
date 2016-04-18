@@ -5,7 +5,7 @@
         </div>
         <div ng-switch-when=true>
 
-            <table style="min-width: 30%; max-width: 50%">
+            <table style="min-width: 10%; max-width: 50%">
                 <tr>
                     <td>Тип книги:</td>
                     <td>
@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                    <hr/>
+                        <hr/>
                     </td>
                 </tr>
                 <tr>
@@ -73,15 +73,48 @@
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>
-                        <input id="lastName" type="text" ng-model="newAuthor.lastName" required/>
-                        <input id="firstName" type="text" ng-model="newAuthor.firstName"/>
-                        <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
-                        <br/>
-                        <input type="button" value="Add author to work" ng-click="addAuthorToWork(newAuthor)"/>
-                        <br/>
-                        <input type="button" value="Add work to book" ng-click="addWorkToItem(newWork)"/>
+                    <td colspan="2">
+                        <table>
+                            <tr style="width: 100%">
+                                <td>Фамилия:</td>
+                                <td>
+                                    <input id="lastName" type="text" ng-model="newAuthor.lastName" ng-keyup="authorsLiveSearch(newAuthor.lastName)" required/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Имя:</td>
+                                <td>
+                                    <input id="firstName" type="text" ng-model="newAuthor.firstName"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Отчество:</td>
+                                <td>
+                                    <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="authorsQueryResult !== []">
+                                <td colspan="2">
+
+                                    <ul>
+                                        <li ng-repeat="author in authorsQueryResult" ng-click="addAuthorToWork(author)">
+                                            {{convertAuthorToString(author)}}
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="button" value="Add author to work"
+                                           ng-click="addAuthorToWork(newAuthor)"/>
+                                    <br/>
+                                    <input type="button" value="Add work to book" ng-click="addWorkToItem(newWork)"/>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>

@@ -69,6 +69,7 @@ services
             logOut: function () {
                 $cookies.remove('access_token');
                 $cookies.remove('refresh_token');
+                window.location.href = "#/offers";
             }
         }
     }]);

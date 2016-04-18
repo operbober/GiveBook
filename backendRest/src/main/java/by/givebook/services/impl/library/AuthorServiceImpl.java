@@ -6,6 +6,8 @@ import by.givebook.services.impl.SimpleServiceImpl;
 import by.givebook.services.library.AuthorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by operb_000 on 11.03.2016.
  */
@@ -20,6 +22,11 @@ public class AuthorServiceImpl extends SimpleServiceImpl<Author, AuthorRepositor
             storedAuthor = getByFullName(entity);
         }
         return storedAuthor;
+    }
+
+    @Override
+    public List<Author> getSearchResults(String lastName) {
+        return repository.findByLastOrFirstNameIgnoreCase(lastName);
     }
 
     private Author getByFullName(Author entity){
