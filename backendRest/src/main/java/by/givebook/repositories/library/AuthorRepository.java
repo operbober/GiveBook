@@ -2,6 +2,10 @@ package by.givebook.repositories.library;
 
 import by.givebook.entities.library.Author;
 import by.givebook.repositories.SimpleRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * Default class description.
@@ -11,5 +15,9 @@ import by.givebook.repositories.SimpleRepository;
  * @since 02.03.2016
  */
 public interface AuthorRepository extends SimpleRepository<Author> {
+
     Author findByLastNameAndFirstNameAndMiddleNameAllIgnoreCase(String lastName, String firstName, String middleName);
+
+    @Query(value = "Select a from Author a where a.lastName like :lastName%")
+    List<Author> findByLastNameIgnoreCase(@Param("lastName") String lastName);
 }

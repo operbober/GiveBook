@@ -5,7 +5,11 @@ import by.givebook.entities.library.Work;
 import by.givebook.services.library.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Default class description.
@@ -21,5 +25,10 @@ public class WorkController extends GenericController<Work, WorkService> {
     @Autowired
     public WorkController(WorkService service) {
         super(service);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/search")
+    protected List<Work> getById(@RequestParam("title") String title) {
+        return service.getSearchResults(title);
     }
 }

@@ -33,14 +33,20 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
         }
         $scope.newWork.authors.push(authorForPut);
         $scope.newAuthor = {};
+        $scope.authorsQueryResult = [];
     };
 
     $scope.addWorkToItem = function (workForPut) {
+        if ($scope.item.book === undefined){
+            $scope.item.book = {};
+        }
         if ($scope.item.book.works === undefined){
             $scope.item.book.works = [];
         }
         $scope.item.book.works.push(workForPut);
         $scope.newWork = {authors: []};
+        $scope.authorsQueryResult = [];
+        $scope.worksQueryResult = [];
     };
 
     $scope.removeAuthorFromWork = function (authorForRemove) {
@@ -109,5 +115,33 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
     $scope.convertWorksListToString = function(works) {
 
         return offerService.convertBookWorksToString(works);
+    };
+
+    $scope.worksQueryResult = [];
+    $scope.worksLiveSearch = function(title) {
+
+        if (title !== undefined && title.length > 0) {
+            var req = {
+                method: 'GET',
+                url: serverUrl + '/works/search?title=' + title
+            };
+            $http(req).then(function (response) {
+                $scope.worksQueryResult = response.data;
+            });
+        }
+    };
+
+    $scope.authorsQueryResult = [];
+    $scope.authorsLiveSearch = function(lastName) {
+
+        if (lastName !== undefined && title.length > 0) {
+            var req = {
+                method: 'GET',
+                url: serverUrl + '/authors/search?lastName=' + lastName
+            };
+            $http(req).then(function (response) {
+                $scope.authorsQueryResult = response.data;
+            });
+        }
     }
 }]);
