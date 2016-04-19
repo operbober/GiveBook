@@ -34,10 +34,10 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
         if (entity.getAuthors() != null) {
             entity.getAuthors().replaceAll(authorService::getOldOrCreateNew);
         }
-        Work storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors());
+        Work storedWork = repository.findOneByNameAndAuthors(entity.getName(), entity.getAuthors());
         if (storedWork == null){
             super.save(entity);
-            storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors());
+            storedWork = repository.findOneByNameAndAuthors(entity.getName(), entity.getAuthors());
         }
         return storedWork;
     }
