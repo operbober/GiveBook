@@ -12,6 +12,8 @@ app.controller('headerController', ['$scope', 'securityService', 'authService', 
 
     $scope.isAuthenticated = securityService.isAuthenticated;
 
+    $scope.hasRole = securityService.hasRole;
+
     $scope.getAccessToken = securityService.getAccessToken;
 
     $scope.onLogOutClick = authService.logOut;

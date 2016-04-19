@@ -7,7 +7,7 @@
  */
 
 services
-    .factory('authService', ['$cookies', '$injector', function ($cookies, $injector) {
+    .factory('authService', ['$injector', function ($injector) {
 
         var appAuthInfo = btoa("givebook:laralara*GiveBook*123");
         var authUri = '/login';
@@ -36,16 +36,15 @@ services
                     data: getRequestBodyForAuth(login, password)
                 };
                 $http(req).then(function (data) {
-                    $cookies.put('access_token', data.data.access_token);
-                    var expireDate = new Date();
-                    expireDate.setDate(expireDate.getDate() + 1000);
-                    $cookies.put('refresh_token', data.data.refresh_token, {'expires': expireDate});
+                    sessionStorage.setItem('access_token', data.data.access_token);
+                    sessionStorage.setItem('refresh_token', data.data.refresh_token);
+                    sessionStorage.setItem('authorities', JSON.stringify(data.data.authorities));
                     window.location.href = "#/offers";
                 });
             },
 
             refresh: function() {
-                if ($cookies.get('refresh_token') !== undefined) {
+                if (sessionStorage.getItem('refresh_token') !== null) {
                     var $http = $injector.get("$http");
                     var req = {
                         method: 'POST',
@@ -54,21 +53,21 @@ services
                             "Authorization": "Basic " + appAuthInfo,
                             "Content-type": "application/x-www-form-urlencoded; charset=utf-8"
                         },
-                        data: getRequestBodyForRefresh($cookies.get('refresh_token'))
+                        data: getRequestBodyForRefresh(sessionStorage.getItem('refresh_token'))
                     };
                     $http(req).then(function (data) {
-                        $cookies.put('access_token', data.data.access_token);
-                        var expireDate = new Date();
-                        expireDate.setDate(expireDate.getDate() + 1000);
-                        $cookies.put('refresh_token', data.data.refresh_token, {'expires': expireDate});
+                        sessionStorage.setItem('access_token', data.data.access_token);
+                        sessionStorage.setItem('refresh_token', data.data.refresh_token);
+                        sessionStorage.setItem('authorities', JSON.stringify(data.data.authorities));
                         window.location.reload();
                     });
                 }
             },
 
             logOut: function () {
-                $cookies.remove('access_token');
-                $cookies.remove('refresh_token');
+                sessionStorage.removeItem('access_token');
+                sessionStorage.removeItem('refresh_token');
+                sessionStorage.removeItem('authorities');
                 window.location.href = "#/offers";
             }
         }

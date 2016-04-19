@@ -11,11 +11,12 @@
         </div>
     </div>
     <div>
-        <a href="#/offerTypes">Offer types</a>
-        <a href="#/bookTypes">Book types</a>
-        <a href="#/bookConditions">Book conditions</a>
-        <a href="#/genres">Genres</a>
-        <br>
+        <div id="dictionaries" ng-show="hasRole('ROLE_ADMIN')">
+            <a href="#/offerTypes">Offer types</a>
+            <a href="#/bookTypes">Book types</a>
+            <a href="#/bookConditions">Book conditions</a>
+            <a href="#/genres">Genres</a>
+        </div>
         <a href="#/offers">Offers overview</a>
         <br/>
         <a href="#/myOffers" ng-show="isAuthenticated()">My offers</a>
