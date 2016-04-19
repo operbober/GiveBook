@@ -134,7 +134,7 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
     $scope.authorsQueryResult = [];
     $scope.authorsLiveSearch = function(lastName) {
 
-        if (lastName !== undefined && title.length > 0) {
+        if (lastName !== undefined && lastName.length > 0) {
             var req = {
                 method: 'GET',
                 url: serverUrl + '/authors/search?lastName=' + lastName
