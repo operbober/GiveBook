@@ -25,9 +25,12 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
         return repository.findByTitleIgnoreCase(title);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public Work getOldOrCreateNew(Work entity) {
+        if (entity.getAuthors() != null && entity.getAuthors().isEmpty()) {
+            entity.setAuthors(null);
+        }
         if (entity.getAuthors() != null) {
             entity.getAuthors().replaceAll(authorService::getOldOrCreateNew);
         }
