@@ -26,7 +26,6 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
     }
 
     @Override
-    @Transactional
     public Work getOldOrCreateNew(Work entity) {
         if (entity.getAuthors() != null && entity.getAuthors().isEmpty()) {
             entity.setAuthors(null);
@@ -34,10 +33,10 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
         if (entity.getAuthors() != null) {
             entity.getAuthors().replaceAll(authorService::getOldOrCreateNew);
         }
-        Work storedWork = repository.findOneByNameAndAuthors(entity.getName(), entity.getAuthors());
+        Work storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors(), (long) entity.getAuthors().size());
         if (storedWork == null){
             super.save(entity);
-            storedWork = repository.findOneByNameAndAuthors(entity.getName(), entity.getAuthors());
+            storedWork = repository.findByNameAndAuthors(entity.getName(), entity.getAuthors(), (long) entity.getAuthors().size());
         }
         return storedWork;
     }
