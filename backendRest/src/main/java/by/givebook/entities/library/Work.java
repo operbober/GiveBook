@@ -18,13 +18,13 @@ public class Work extends IdEntity {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "works_authors",
+    @JoinTable(name = "work_author",
             joinColumns = @JoinColumn(name = "work_id"),
             inverseJoinColumns= @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "works_genres",
+    @JoinTable(name = "work_genre",
             joinColumns = @JoinColumn(name = "work_id"),
             inverseJoinColumns= @JoinColumn(name = "genre_id"))
     private List<Genre> genres;

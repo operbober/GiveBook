@@ -17,7 +17,8 @@ import java.util.List;
  * @since 03.03.2016
  */
 public interface WorkRepository extends SimpleRepository<Work> {
-    Work findByNameAndAuthors(String name, List<Author> authors);
+    @Query("SELECT w FROM Work w INNER JOIN w.authors a WHERE w.name = ?1 AND a IN (?2)")
+    Work findOneByNameAndAuthors(String name, List<Author> authors);
 
     @Query(value = "Select w from Work w where w.name like %:title%")
     List<Work> findByTitleIgnoreCase(@Param("title") String title);
