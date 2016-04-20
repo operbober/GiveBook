@@ -55,7 +55,7 @@ app
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/404', {
-                templateUrl: '../layout/security/accessDenied.html'
+                templateUrl: '../layout/security/404.html'
             })
             .otherwise({
                 redirectTo: '/404'
