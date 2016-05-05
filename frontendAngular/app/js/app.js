@@ -20,6 +20,11 @@ app
                 controller: 'loginController',
                 uri: '/login/'
             })
+            .when('/register', {
+                templateUrl: '../layout/security/register.html',
+                controller: 'loginController',
+                uri: '/register/'
+            })
             .when('/offers', {
                 templateUrl: '../layout/offer/offer.html',
                 controller: 'offerController',
@@ -56,6 +61,11 @@ app
             })
             .when('/404', {
                 templateUrl: '../layout/security/404.html'
+            })
+            .when('//:code', {
+                templateUrl: '../layout/offer/offer.html',
+                controller: 'offerController',
+                uri: '/offers/'
             })
             .otherwise({
                 redirectTo: '/404'

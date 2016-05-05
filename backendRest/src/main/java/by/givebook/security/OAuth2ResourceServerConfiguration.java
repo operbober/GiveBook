@@ -27,6 +27,7 @@ public class OAuth2ResourceServerConfiguration extends ResourceServerConfigurerA
                 .antMatchers(HttpMethod.GET, "/offerTypes/").authenticated()
                 .antMatchers(HttpMethod.PUT, "/myOffers/").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/myOffers/").authenticated()
+                .antMatchers(HttpMethod.PUT, "/register").permitAll()
                 .antMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN");
     }

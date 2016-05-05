@@ -38,6 +38,12 @@ public class User extends IdEntity{
 
     public User(){}
 
+    public User(String login, String email, String password) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
     public User(String login, String password, String email, Person person, Set<Role> roles) {
         this.login = login;
         this.password = password;

@@ -2,6 +2,10 @@
     <div ng-switch="isAuthenticated()">
         <div ng-switch-default>
             <a href="#/login">Log in</a>
+            <a href="#/register">Register</a>
+
+            <a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>
+            <!--<a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fnodejs-givebook.rhcloud.com%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>-->
             <hr/>
         </div>
         <div ng-switch-when=true>
