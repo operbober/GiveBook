@@ -1,20 +1,26 @@
 <form name="pageForm" ng-init="onLoad()">
-    <div ng-switch="mode">
+    <div ng-switch="mode" style="max-width: 50%">
         <div ng-switch-default>
-            <input type="button" value="Add" ng-click="onActionAdd()"/>
+            <input type="button" class="w3-btn w3-green w3-hover-white w3-ripple" value="Add" ng-click="onActionAdd()"/>
         </div>
-        <div ng-switch-when=true>
-            <label>
-                Название:
-                <input id="name" type="text" ng-model="item.name" required/>
-            </label>
+        <div ng-switch-when=true class="w3-card">
+            <table>
+                <tr>
+                    <td>
+                        Название:
+                    </td>
+                    <td>
+                        <input class="w3-input w3-border" id="name" type="text" ng-model="item.name" placeholder="Название" required/>
+                    </td>
+                </tr>
+            </table>
             <br>
-            <input type="button" value="Put" ng-click="onActionSubmit(item)"/>
-            <input type="button" value="Cancel" ng-click="cancelModes()"/>
+            <input type="button" class="w3-btn w3-green w3-hover-white w3-ripple" value="Put" ng-click="onActionSubmit(item)"/>
+            <input type="button" class="w3-btn w3-red w3-hover-black w3-ripple" value="Cancel" ng-click="cancelModes()"/>
         </div>
     </div>
 
-    <table>
+    <table class="w3-table w3-bordered w3-striped w3-border">
         <tr>
             <th>Название</th>
             <th>Действие</th>
@@ -23,8 +29,8 @@
             <td>{{item.name}}</td>
             <td ng-switch="mode">
                 <div ng-switch-when=false>
-                    <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
-                    <input type="button" value="Delete" ng-click="onActionDelete(item)"/>
+                    <input type="button" class="w3-btn w3-orange w3-hover-white w3-ripple" value="Edit" ng-click="onActionEdit(item)"/>
+                    <input type="button" class="w3-btn w3-red w3-hover-black w3-ripple" value="Delete" ng-click="onActionDelete(item)"/>
                 </div>
             </td>
         </tr>

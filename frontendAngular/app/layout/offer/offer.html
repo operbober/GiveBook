@@ -1,18 +1,19 @@
 <form name="pageForm" ng-init="onLoad()">
     <div ng-switch="mode">
         <div ng-switch-default>
-            <input type="button" value="Add" ng-click="onActionAdd()"/>
+            <input type="button" class="w3-btn w3-green w3-hover-white w3-ripple" value="Add" ng-click="onActionAdd()"/>
         </div>
-        <div ng-switch-when=true>
+        <div ng-switch-when=true class="w3-card w3-light-grey" style="max-width: 50%">
 
-            <table style="min-width: 10%; max-width: 50%">
+            <table>
                 <tr>
                     <td>Тип книги:</td>
                     <td>
                         <select id="bookType"
                                 ng-model="item.book.bookType"
                                 ng-options="bookType.name for bookType in bookTypes track by bookType.id"
-                                required>
+                                class="w3-select w3-white w3-ripple">
+                            <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
                 </tr>
@@ -21,9 +22,9 @@
                     <td>
                         <select id="bookCondition"
                                 ng-model="item.book.bookCondition"
-
                                 ng-options="bookCondition.name for bookCondition in bookConditions track by bookCondition.id"
-                                required>
+                                class="w3-select w3-white w3-ripple">
+                            <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
                 </tr>
@@ -32,9 +33,9 @@
                     <td>
                         <select id="bookLanguage"
                                 ng-model="item.book.bookLanguage"
-
                                 ng-options="bookLanguage.name for bookLanguage in bookLanguages track by bookLanguage.id"
-                                required>
+                                class="w3-select w3-white w3-ripple">
+                            <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
                 </tr>
@@ -46,28 +47,30 @@
                 <tr>
                     <td>Произведение(я):</td>
                     <td>
-                        <label ng-repeat="work in item.book.works" ng-click="removeWorkFromItem(work)">
-                            {{convertWorkToString(work)}}
-                        </label>
-                    </td>
-                </tr>
-
-                <tr ng-show="worksQueryResult !== []">
-                    <td colspan="2">
-
-                        <ul>
-                            <li ng-repeat="work in worksQueryResult" ng-click="addWorkToItem(work)">
-                                {{convertWorkToString(work)}}
-                            </li>
-                        </ul>
+                        <input type="button"
+                               ng-repeat="work in item.book.works"
+                               ng-click="removeWorkFromItem(work)"
+                               value="{{convertWorkToString(work)}}"
+                               class="w3-btn w3-orange w3-hover-black"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Название произведения:</td>
                     <td>
                         <label>
-                            <input id="workTitle" type="text" ng-model="newWork.name" ng-keyup="worksLiveSearch(newWork.name)" required/>
+                            <input id="workTitle" type="text"
+                                   ng-model="newWork.name"
+                                   ng-keyup="worksLiveSearch(newWork.name)"
+                                   class="w3-input w3-white w3-ripple"
+                                   placeholder="Евгений Онегин"
+                                   required/>
                         </label>
+                        <ul class="w3-ul w3-border w3-white w3-hoverable"
+                            ng-show="worksQueryResult !== []">
+                            <li ng-repeat="work in worksQueryResult" ng-click="addWorkToItem(work)">
+                                {{convertWorkToString(work)}}
+                            </li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -78,9 +81,11 @@
                 <tr>
                     <td>Автор(ы):</td>
                     <td>
-                        <label ng-repeat="author in newWork.authors" ng-click="removeAuthorFromWork(author)">
-                            {{convertAuthorToString(author)}}
-                        </label>
+                        <input type="button"
+                               ng-repeat="author in newWork.authors"
+                               ng-click="removeAuthorFromWork(author)"
+                               value="{{convertAuthorToString(author)}}"
+                               class="w3-btn w3-orange w3-hover-black"/>
                     </td>
                 </tr>
                 <tr>
@@ -89,52 +94,66 @@
                             <tr style="width: 100%">
                                 <td>Фамилия:</td>
                                 <td>
-                                    <input id="lastName" type="text" ng-model="newAuthor.lastName" ng-keyup="authorsLiveSearch(newAuthor.lastName)" required/>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Имя:</td>
-                                <td>
-                                    <input id="firstName" type="text" ng-model="newAuthor.firstName"/>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Отчество:</td>
-                                <td>
-                                    <input id="middleName" type="text" ng-model="newAuthor.middleName"/>
-                                </td>
-                            </tr>
-
-                            <tr ng-show="authorsQueryResult !== []">
-                                <td colspan="2">
-
-                                    <ul>
+                                    <input id="lastName" type="text" ng-model="newAuthor.lastName"
+                                           ng-keyup="authorsLiveSearch(newAuthor.lastName)" required
+                                           class="w3-input w3-white w3-ripple"
+                                           placeholder="Пушкин"/>
+                                    <ul ng-show="authorsQueryResult !== []"
+                                        class="w3-ul w3-border w3-white w3-hoverable">
                                         <li ng-repeat="author in authorsQueryResult" ng-click="addAuthorToWork(author)">
                                             {{convertAuthorToString(author)}}
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td>Имя:</td>
+                                <td>
+                                    <input id="firstName" type="text" ng-model="newAuthor.firstName"
+                                           class="w3-input w3-white w3-ripple"
+                                           placeholder="Александр"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Отчество:</td>
+                                <td>
+                                    <input id="middleName" type="text" ng-model="newAuthor.middleName"
+                                           class="w3-input w3-white w3-ripple"
+                                           placeholder="Сергеевич"/>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td>
-                                    <input type="button" value="Add author to work"
-                                           ng-click="addAuthorToWork(newAuthor)"/>
+                                    <input type="button"
+                                           value="Add author to work"
+                                           ng-click="addAuthorToWork(newAuthor)"
+                                           class="w3-btn w3-blue w3-hover-white w3-ripple"/>
                                     <br/>
-                                    <input type="button" value="Add work to book" ng-click="addWorkToItem(newWork)"/>
+                                    <input type="button"
+                                           value="Add work to book"
+                                           ng-click="addWorkToItem(newWork)"
+                                           class="w3-btn w3-blue w3-hover-white w3-ripple"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
             </table>
-            <input type="button" value="Put" ng-click="submitItem(item)"/>
-            <input type="button" value="Cancel" ng-click="cancelModes()"/>
+            <input type="button"
+                   value="Put"
+                   ng-click="submitItem(item)"
+                   class="w3-btn w3-green w3-hover-white w3-ripple"/>
+            <input type="button"
+                   value="Cancel"
+                   ng-click="cancelModes()"
+                   class="w3-btn w3-red w3-hover-black w3-ripple"/>
         </div>
     </div>
 
-    <table>
+    <table class="w3-table w3-bordered w3-striped w3-border">
         <tr>
             <th>Тип сделки</th>
             <th>Книга</th>
@@ -153,8 +172,8 @@
             <td>{{item.user.login}}</td>
             <td>
                 <div>
-                    <input type="button" value="Edit" ng-click="onActionEdit(item)"/>
-                    <input type="button" value="Delete" ng-click="onActionDelete(item)"/>
+                    <input type="button" class="w3-btn w3-orange w3-hover-white w3-ripple" value="Edit" ng-click="onActionEdit(item)"/>
+                    <input type="button" class="w3-btn w3-red w3-hover-black w3-ripple" value="Delete" ng-click="onActionDelete(item)"/>
                 </div>
             </td>
         </tr>

@@ -1,29 +1,28 @@
-<div>
-    <div ng-switch="isAuthenticated()">
-        <div ng-switch-default>
-            <a href="#/login">Log in</a>
-            <a href="#/register">Register</a>
+<div ng-switch="isAuthenticated()">
+    <div ng-switch-default>
+        <a href="#/login">Log in</a>
+        <a href="#/register">Register</a>
 
-            <a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>
-            <!--<a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fnodejs-givebook.rhcloud.com%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>-->
-            <hr/>
-        </div>
-        <div ng-switch-when=true>
-            <p>{{getAccessToken()}}</p>
-            <input type="button" value="Log out" ng-click="onLogOutClick()"/>
-            <hr/>
-        </div>
+        <a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>
+        <!--<a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fnodejs-givebook.rhcloud.com%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>-->
+        <!--<hr/>-->
     </div>
-    <div>
-        <div id="dictionaries" ng-show="hasRole('ROLE_ADMIN')">
-            <a href="#/offerTypes">Offer types</a>
-            <a href="#/bookTypes">Book types</a>
-            <a href="#/bookConditions">Book conditions</a>
-            <a href="#/genres">Genres</a>
-        </div>
-        <a href="#/offers">Offers overview</a>
-        <br/>
-        <a href="#/myOffers" ng-show="isAuthenticated()">My offers</a>
-        <hr/>
+    <div ng-switch-when=true>
+        <p>{{getAccessToken()}}</p>
+        <input type="button"
+               class="w3-btn w3-grey w3-hover-white w3-ripple"
+               value="Log out"
+               ng-click="onLogOutClick()"/>
     </div>
+</div>
+<div id="dictionaries" ng-show="hasRole('ROLE_ADMIN')">
+    <a href="#/offerTypes">Offer types</a>
+    <a href="#/bookTypes">Book types</a>
+    <a href="#/bookConditions">Book conditions</a>
+    <a href="#/genres">Genres</a>
+</div>
+<div id="menu">
+    <a href="#/offers">Offers overview</a>
+    <!--<br/>-->
+    <a href="#/myOffers" ng-show="isAuthenticated()">My offers</a>
 </div>

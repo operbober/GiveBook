@@ -62,10 +62,9 @@ app
             .when('/404', {
                 templateUrl: '../layout/security/404.html'
             })
-            .when('//:code', {
-                templateUrl: '../layout/offer/offer.html',
-                controller: 'offerController',
-                uri: '/offers/'
+            .when('/', {
+                templateUrl: '../layout/security/oauth.html ',
+                controller: 'oauthController'
             })
             .otherwise({
                 redirectTo: '/404'
