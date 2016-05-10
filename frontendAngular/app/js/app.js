@@ -26,7 +26,7 @@ app
                 uri: '/register/'
             })
             .when('/offers', {
-                templateUrl: '../layout/offer/myOffers/page.html',
+                templateUrl: '../layout/offer/overview/page.html',
                 controller: 'offerController',
                 uri: '/offers/'
             })

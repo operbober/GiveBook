@@ -1,11 +1,15 @@
-<form name="registerForm">
+<div class="w3-card">
 
     <table style="min-width: 30%; max-width: 50%">
         <tr>
             <td>Логин:</td>
             <td>
                 <label>
-                    <input id="login" type="text" ng-model="credentials.login" required/>
+                    <input id="login"
+                           class="w3-input w3-hover-light-grey w3-border"
+                           type="text"
+                           ng-model="credentials.login"
+                           required/>
                 </label>
             </td>
         </tr>
@@ -13,7 +17,11 @@
             <td>E-mail:</td>
             <td>
                 <label>
-                    <input id="email" type="email" ng-model="credentials.email" required/>
+                    <input id="email"
+                           class="w3-input w3-hover-light-grey w3-border"
+                           type="email"
+                           ng-model="credentials.email"
+                           required/>
                 </label>
             </td>
         </tr>
@@ -21,12 +29,19 @@
             <td>Пароль:</td>
             <td>
                 <label>
-                    <input id="password" type="password" ng-model="credentials.password" required/>
+                    <input id="password"
+                           class="w3-input w3-hover-light-grey w3-border"
+                           type="password"
+                           ng-model="credentials.password"
+                           required/>
                 </label>
             </td>
         </tr>
+        <tr>
+            <td>
+                <input type="button" value="Register" class="w3-btn w3-grey w3-ripple"
+                       ng-click="registerNew(credentials.login, credentials.email, credentials.password)"/>
+            </td>
+        </tr>
     </table>
-
-    <input type="button" value="Register" class="w3-btn w3-grey w3-ripple" ng-click="registerNew(credentials.login, credentials.email, credentials.password)"/>
-
-</form>
+</div>

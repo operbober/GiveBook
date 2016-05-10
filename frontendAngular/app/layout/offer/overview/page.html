@@ -1,0 +1,16 @@
+<div class="main-content"
+     ng-init="onLoad()">
+    <ul class="books-container">
+        <li class="item-book"
+            ng-repeat="item in itemList">
+            <a href="#" class="link-book">
+                <h2 class="book-title">{{item.book.works[0].name}}</h2>
+
+                <h3 class="book-author-name">{{item.book.works[0].authors[0].firstName}}
+                    {{item.book.works[0].authors[0].middleName}}</h3>
+
+                <h3 class="book-author-surname">{{item.book.works[0].authors[0].lastName}}</h3>
+            </a>
+        </li>
+    </ul>
+</div>

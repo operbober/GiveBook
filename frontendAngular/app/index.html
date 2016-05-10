@@ -5,7 +5,9 @@
     <title>Give Book!</title>
 
     <link rel="stylesheet" href="css/w3.css">
-    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -21,6 +23,7 @@
     <script src="js/service/securityService.js"></script>
 
     <script src="js/directive/headerDirective.js"></script>
+    <script src="js/directive/footerDirective.js"></script>
     <script src="js/directive/dictionary/addEdit.js"></script>
     <script src="js/directive/dictionary/putCancelButtons.js"></script>
     <script src="js/directive/dictionary/table.js"></script>
@@ -37,9 +40,11 @@
 </head>
 <body>
 
-<div gb-header></div>
-
-<div ng-view id="centerContent" class="pageCentered"></div>
+<div class="wrapper">
+    <div gb-header class="header"></div>
+    <div ng-view id="content" class="main-content"></div>
+    <div gb-footer class="footer"></div>
+</div>
 
 </body>
 </html>
