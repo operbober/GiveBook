@@ -4,9 +4,9 @@
 'use strict';
 
 directives
-    .directive('gbDictionaryAddEdit', function(){
+    .directive('gbOffersAdd', function () {
         return {
-            templateUrl: '../../layout/template/dictionary/addEdit/addEdit.html',
+            templateUrl: '../../layout/offer/myOffers/addEdit/addEdit.html',
             scope: true
         }
     });

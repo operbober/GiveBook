@@ -26,12 +26,12 @@ app
                 uri: '/register/'
             })
             .when('/offers', {
-                templateUrl: '../layout/offer/offer.html',
+                templateUrl: '../layout/offer/myOffers/page.html',
                 controller: 'offerController',
                 uri: '/offers/'
             })
             .when('/myOffers', {
-                templateUrl: '../layout/offer/offer.html',
+                templateUrl: '../layout/offer/myOffers/page.html',
                 controller: 'offerController',
                 uri: '/myOffers/',
                 requires: {login: true}
