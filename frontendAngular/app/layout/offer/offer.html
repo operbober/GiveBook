@@ -12,7 +12,7 @@
                         <select id="bookType"
                                 ng-model="item.book.bookType"
                                 ng-options="bookType.name for bookType in bookTypes track by bookType.id"
-                                class="w3-select w3-white w3-ripple">
+                                class="w3-select w3-white w3-hover-light-grey w3-ripple">
                             <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
@@ -23,7 +23,7 @@
                         <select id="bookCondition"
                                 ng-model="item.book.bookCondition"
                                 ng-options="bookCondition.name for bookCondition in bookConditions track by bookCondition.id"
-                                class="w3-select w3-white w3-ripple">
+                                class="w3-select w3-white w3-hover-light-grey w3-ripple">
                             <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
@@ -34,7 +34,7 @@
                         <select id="bookLanguage"
                                 ng-model="item.book.bookLanguage"
                                 ng-options="bookLanguage.name for bookLanguage in bookLanguages track by bookLanguage.id"
-                                class="w3-select w3-white w3-ripple">
+                                class="w3-select w3-white w3-hover-light-grey w3-ripple">
                             <option style="display:none" value="">Не выбрано</option>
                         </select>
                     </td>
@@ -61,7 +61,7 @@
                             <input id="workTitle" type="text"
                                    ng-model="newWork.name"
                                    ng-keyup="worksLiveSearch(newWork.name)"
-                                   class="w3-input w3-white w3-ripple"
+                                   class="w3-input w3-white w3-hover-light-grey w3-ripple"
                                    placeholder="Евгений Онегин"
                                    required/>
                         </label>
@@ -96,7 +96,7 @@
                                 <td>
                                     <input id="lastName" type="text" ng-model="newAuthor.lastName"
                                            ng-keyup="authorsLiveSearch(newAuthor.lastName)" required
-                                           class="w3-input w3-white w3-ripple"
+                                           class="w3-input w3-white w3-hover-light-grey w3-ripple"
                                            placeholder="Пушкин"/>
                                     <ul ng-show="authorsQueryResult !== []"
                                         class="w3-ul w3-border w3-white w3-hoverable">
@@ -111,7 +111,7 @@
                                 <td>Имя:</td>
                                 <td>
                                     <input id="firstName" type="text" ng-model="newAuthor.firstName"
-                                           class="w3-input w3-white w3-ripple"
+                                           class="w3-input w3-white w3-hover-light-grey w3-ripple"
                                            placeholder="Александр"/>
                                 </td>
                             </tr>
@@ -120,7 +120,7 @@
                                 <td>Отчество:</td>
                                 <td>
                                     <input id="middleName" type="text" ng-model="newAuthor.middleName"
-                                           class="w3-input w3-white w3-ripple"
+                                           class="w3-input w3-white w3-hover-light-grey w3-ripple"
                                            placeholder="Сергеевич"/>
                                 </td>
                             </tr>

@@ -37,24 +37,24 @@ app
                 requires: {login: true}
             })
             .when('/offerTypes', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/offerTypes/'
             })
             .when('/bookTypes', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/bookTypes/',
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/bookConditions', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/bookConditions/',
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/genres', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/genres/',
                 requires: {login: true, role: 'ROLE_ADMIN'}

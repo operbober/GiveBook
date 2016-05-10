@@ -5,7 +5,7 @@
  * @version 1.0
  * @date 30.03.2016
  */
-directives.directive('header', function () {
+directives.directive('gbHeader', function () {
     return {
         templateUrl: '../../layout/template/header.html',
         controller: 'headerController'

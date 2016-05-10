@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Give Book!</title>
 
-    <!--<link rel="stylesheet" href="css/app.css"/>-->
     <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/app.css"/>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -21,17 +21,17 @@
     <script src="js/service/securityService.js"></script>
 
     <script src="js/directive/headerDirective.js"></script>
+    <script src="js/directive/dictionary/addEdit.js"></script>
+    <script src="js/directive/dictionary/table.js"></script>
 
     <script src="js/controller/offer/offerController.js"></script>
     <script src="js/controller/security/loginController.js"></script>
-    <script src="js/controller/security/oauthController.js"></script>
-    <script src="js/controller/template/dictionaryController.js"></script>
+    <script src="js/controller/template/dictionary/dictionaryController.js"></script>
     <script src="js/controller/template/headerController.js"></script>
 </head>
 <body>
-<header>
 
-</header>
+<div gb-header></div>
 
 <div ng-view id="centerContent" class="pageCentered"></div>
 
