@@ -1,0 +1,355 @@
+@import url("reset.css");
+@import url(fonts.css);
+
+html, body {
+    height: 100%;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.wrapper {
+    width: 1198px;
+    min-height: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+    background: url(../img/head-bg.png) no-repeat;
+}
+
+.logo {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-name {
+    font-family: "SegoeUILight";
+    font-size: 50px;
+    color: black;
+
+}
+
+.logo-name span:first-child {
+    color: #3ba6e0;
+}
+
+.logo-name span:nth-child(2) {
+    color: #05ae4b;
+}
+
+.log-in {
+    position: absolute;
+    right: 27px;
+    bottom: 12px;
+    display: inline-block;
+    padding-right: 25px;
+    color: #9ea1a1;
+    font-family: "SegoeUIRegular";
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.log-in:before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: 4px;
+    display: block;
+    height: 30px;
+    width: 25px;
+    background: url(../img/sprite.png) 0 0 no-repeat;
+}
+
+.main-nav {
+    position: relative;
+}
+
+.menu-view {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 45px;
+    background: url(../img/sprite.png) no-repeat;
+    background-color: #05ae4b;
+    -moz-border-radius: 45px 0 0 45px;
+    -webkit-border-radius: 45px 0 0 45px;
+    border-radius: 45px 0 0 45px;
+
+}
+
+.menu-view:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30px;
+    display: block;
+    height: 45px;
+    width: 45px;
+    background-color: white;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.menu-view-square {
+    margin-left: 20px;
+    background-position: 40px -105px;
+}
+
+.menu-view-line {
+    background-position: -10px -55px;
+}
+
+input, button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background-color: none;
+}
+
+#search-form {
+    position: relative;
+    display: inline-block;
+    height: 45px;
+    z-index: 1;
+    vertical-align: top;
+    font-size: 0;
+}
+
+.search-input::-webkit-input-placeholder {
+    color: #e7e7e7;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.search-input::-moz-placeholder {
+    color: #e7e7e7;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.search-input:-moz-placeholder {
+    color: #e7e7e7;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.search-input:-ms-input-placeholder {
+    color: #e7e7e7;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.search-input {
+    width: 610px;
+    height: 45px;
+    padding: 10px 25px;
+    vertical-align: top;
+    color: #9ea1a1;
+    font-size: 16px;
+    border: 1px solid #05ae4b;
+    -moz-border-radius: 45px 0 0 45px;
+    -webkit-border-radius: 45px 0 0 45px;
+    border-radius: 45px 0 0 45px;
+}
+
+.search-btn {
+    display: inline-block;
+    width: 60px;
+    height: 45px;
+    -moz-border-radius: 0 45px 45px 0;
+    -webkit-border-radius: 0 45px 45px 0;
+    border-radius: 0 45px 45px 0;
+    background: url(../img/sprite.png) no-repeat -48px -1px;
+    background-color: #05ae4b;
+    cursor: pointer;
+}
+
+.nav-btn {
+    display: inline-block;
+    width: 110px;
+    height: 45px;
+    background-color: #05ae4b;
+    background-image: url(../img/sprite.png);
+}
+
+.prev {
+    position: relative;
+    background-position: -64px -171px;
+    margin-right: 5px;
+}
+
+.prev:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -30px;
+    display: block;
+    height: 45px;
+    width: 45px;
+    background-color: white;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.next {
+    -moz-border-radius: 0 45px 45px 0;
+    -webkit-border-radius: 0 45px 45px 0;
+    border-radius: 0 45px 45px 0;
+    background-position: -60px -237px;
+}
+
+.add {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 570px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding-top: 25px;
+    padding-left: 21px;
+    font-weight: bold;
+    font-size: 32px;
+    background-color: #05ae4b;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    border-radius: 50%;
+    color: white;
+}
+
+.main-content {
+    margin-top: 55px;
+}
+
+.books-container {
+    padding: 0 90px;
+    font-size: 0;
+}
+
+.item-book {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    box-shadow: 2px 3px 8px 0px rgb(102, 102, 102);
+}
+
+.link-book {
+    position: relative;
+    display: block;
+    width: 190px;
+    height: 200px;
+    border-top: 2px solid #05ae4b;
+    border-bottom: 3px solid #05ae4b;
+    padding: 5px;
+    padding-top: 110px;
+}
+
+.link-book:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 55px;
+    display: block;
+    width: 72px;
+    height: 75px;
+    background: url(../img/sprite.png) no-repeat -10px -420px;
+}
+
+.book-title, .book-author-name, .book-author-surname {
+    font-family: "Arial Unicode MS";
+    text-align: center;
+    color: black;
+}
+
+.book-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.book-author-name, .book-author-surname {
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: 120px;
+    padding: 10px;
+    font-family: "Arial";
+    text-align: center;
+    background: url(../img/footer-bg.png) no-repeat;
+    color: rgb(158, 161, 161);
+}
+
+.social-container {
+    text-align: center;
+}
+
+.item-social {
+    display: inline-block;
+}
+
+.social {
+    display: block;
+    width: 55px;
+    height: 55px;
+    margin-right: 15px;
+    background-color: #05ae4b;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    border-radius: 50%;
+    background-image: url(../img/sprite.png);
+}
+
+.social-fb {
+    background-position: -10px -300px;
+}
+
+.social-vk {
+    background-position: -11px -360px;
+}
+
+.social-mail {
+    margin-right: 0;
+    background-position: -17px -503px;
+}
+
+blockquote {
+    display: inline-block;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.quote-author {
+    text-align: right;
+    font-family: "SegoeUILight";
+}
+
+.copyright {
+    font-size: 20px;
+    font-family: "SegoeUILight";
+}

@@ -1,0 +1,63 @@
+<table>
+    <tr ng-show="newWork.authors !== undefined && newWork.authors.length > 0">
+        <td>Автор(ы):</td>
+        <td>
+            <input type="button"
+                   ng-repeat="author in newWork.authors"
+                   ng-click="removeAuthorFromWork(author)"
+                   value="{{convertAuthorToString(author)}}"
+                   class="w3-btn w3-orange w3-hover-black"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Фамилия:</td>
+        <td>
+            <input id="lastName" type="text" ng-model="newAuthor.lastName"
+                   ng-keyup="authorsLiveSearch(newAuthor.lastName)" required
+                   class="w3-input w3-white w3-hover-light-grey w3-ripple"
+                   placeholder="Пушкин"/>
+            <ul ng-show="authorsQueryResult !== undefined && authorsQueryResult.length > 0"
+                class="w3-ul w3-border w3-white w3-hoverable">
+                <li ng-repeat="author in authorsQueryResult" ng-click="addAuthorToWork(author)">
+                    {{convertAuthorToString(author)}}
+                </li>
+                <li ng-click="authorsQueryResult.splice(0, authorsQueryResult.length)"
+                    class="w3-red">
+                    Закрыть
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Имя:</td>
+        <td>
+            <input id="firstName" type="text" ng-model="newAuthor.firstName"
+                   class="w3-input w3-white w3-hover-light-grey w3-ripple"
+                   placeholder="Александр"/>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Отчество:</td>
+        <td>
+            <input id="middleName" type="text" ng-model="newAuthor.middleName"
+                   class="w3-input w3-white w3-hover-light-grey w3-ripple"
+                   placeholder="Сергеевич"/>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="button"
+                   value="Add author to work"
+                   ng-click="addAuthorToWork(newAuthor)"
+                   class="w3-btn w3-blue w3-hover-white w3-ripple"/>
+            <br/>
+            <input type="button"
+                   value="Add work to book"
+                   ng-click="addWorkToItem(newWork)"
+                   class="w3-btn w3-blue w3-hover-white w3-ripple"/>
+        </td>
+    </tr>
+</table>

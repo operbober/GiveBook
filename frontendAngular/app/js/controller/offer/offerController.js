@@ -97,7 +97,7 @@ app.controller('offerController', ['$scope', '$http', '$controller', 'offerServi
     $scope.submitItem = function(itemForPut) {
         itemForPut.user = null;
         var httpRequest = $http.put(serverUrl + $scope.uri, itemForPut).success(function(data, status) {
-            itemTemplate.book.works = undefined;
+            item = itemTemplate;
             $scope.cancelModes();
         });
     };

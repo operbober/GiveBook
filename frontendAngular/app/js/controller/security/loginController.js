@@ -6,7 +6,9 @@
 app.controller('loginController', ['$scope', 'authService', function ($scope, authService) {
 
 
-    $scope.credentials = {login: '', password: ''};
+    $scope.credentials = {login: '', password: '', email: ''};
 
     $scope.authorise = authService.logIn;
+
+    $scope.registerNew = authService.register;
 }]);

@@ -1,0 +1,27 @@
+<table class="w3-table w3-bordered w3-striped w3-border">
+    <tr>
+        <th>Тип сделки</th>
+        <th>Книга</th>
+        <th>Тип</th>
+        <th>Состояние</th>
+        <th>Язык</th>
+        <th>Пользователь</th>
+        <th>Действие</th>
+    </tr>
+    <tr ng-repeat="item in itemList">
+        <td>{{item.offerType.name}}</td>
+        <td>{{convertWorksListToString (item.book.works)}}</td>
+        <td>{{item.book.bookType.name}}</td>
+        <td>{{item.book.bookCondition.name}}</td>
+        <td>{{item.book.bookLanguage.name}}</td>
+        <td>{{item.user.login}}</td>
+        <td>
+            <div>
+                <input type="button" class="w3-btn w3-orange w3-hover-white w3-ripple" value="Edit"
+                       ng-click="onActionEdit(item)"/>
+                <input type="button" class="w3-btn w3-red w3-hover-black w3-ripple" value="Delete"
+                       ng-click="onActionDelete(item)"/>
+            </div>
+        </td>
+    </tr>
+</table>

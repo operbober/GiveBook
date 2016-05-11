@@ -1,25 +1,49 @@
-<div>
-    <div ng-switch="isAuthenticated()">
-        <div ng-switch-default>
-            <a href="#/login">Log in</a>
-            <hr/>
-        </div>
-        <div ng-switch-when=true>
-            <p>{{getAccessToken()}}</p>
-            <input type="button" value="Log out" ng-click="onLogOutClick()"/>
-            <hr/>
-        </div>
+<div ng-switch="isAuthenticated()">
+    <div ng-switch-default>
+        <a class="log-in"
+           href="#/login">Вход</a>
+        <!--<a href="#/login">Log in</a>-->
+
+
+        <!--<a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fnodejs-givebook.rhcloud.com%2F&response_type=code&client_id=376771576693-sn5kmg1fe8jgv252ruuf0ja329kcfg1v.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">Google+</a>-->
+        <!--<hr/>-->
     </div>
-    <div>
-        <div id="dictionaries" ng-show="hasRole('ROLE_ADMIN')">
-            <a href="#/offerTypes">Offer types</a>
-            <a href="#/bookTypes">Book types</a>
-            <a href="#/bookConditions">Book conditions</a>
-            <a href="#/genres">Genres</a>
-        </div>
-        <a href="#/offers">Offers overview</a>
-        <br/>
-        <a href="#/myOffers" ng-show="isAuthenticated()">My offers</a>
-        <hr/>
+    <div ng-switch-when=true>
+        <p>{{getAccessToken()}}</p>
+        <a class="log-in"
+           ng-click="onLogOutClick()">Выход</a>
     </div>
 </div>
+<div id="dictionaries" ng-show="hasRole('ROLE_ADMIN')">
+    <input type="button"
+           class="w3-btn w3-deep-orange w3-hover-white w3-ripple"
+           value="Offer types"
+           onclick="window.location.href = '#/offerTypes'"/>
+    <input type="button"
+           class="w3-btn w3-deep-orange w3-hover-white w3-ripple"
+           value="Book types"
+           onclick="window.location.href = '#/bookTypes'"/>
+    <input type="button"
+           class="w3-btn w3-deep-orange w3-hover-white w3-ripple"
+           value="Book conditions"
+           onclick="window.location.href = '#/bookConditions'"/>
+    <input type="button"
+           class="w3-btn w3-deep-orange w3-hover-white w3-ripple"
+           value="Genres"
+           onclick="window.location.href = '#/genres'"/>
+</div>
+<div id="menu">
+    <input type="button"
+           class="w3-btn w3-green w3-hover-white w3-ripple"
+           value="Offers overview"
+           onclick="window.location.href = '#/offers'"/>
+    <input type="button"
+           class="w3-btn w3-green w3-hover-white w3-ripple"
+           value="My offers"
+           ng-show="isAuthenticated()"
+           onclick="window.location.href = '#/myOffers'"/>
+</div>
+
+<a href="#/offers" class="logo">
+    <h1 class="logo-name"><span>G</span>ive<span>B</span>ook</h1>
+</a>

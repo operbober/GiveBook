@@ -11,6 +11,7 @@ services
 
         var appAuthInfo = btoa("givebook:laralara*GiveBook*123");
         var authUri = '/login';
+        var registerUri = '/register';
         var getRequestBodyForAuth = function (login, password) {
 
             return 'grant_type=' + 'password'
@@ -69,6 +70,13 @@ services
                 sessionStorage.removeItem('refresh_token');
                 sessionStorage.removeItem('authorities');
                 window.location.href = "#/offers";
+            },
+
+            register: function(login, email, password) {
+                var $http = $injector.get("$http");
+                $http.put(serverUrl + registerUri, {login: login, email: email, password: password}).then(function (data) {
+                    window.location.href = "#/login";
+                });
             }
         }
     }]);

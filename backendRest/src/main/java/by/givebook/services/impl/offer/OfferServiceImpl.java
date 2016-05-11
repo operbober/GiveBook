@@ -7,6 +7,7 @@ import by.givebook.entities.offer.Book;
 import by.givebook.entities.offer.Offer;
 import by.givebook.entities.offer.OfferType;
 import by.givebook.repositories.offer.OfferRepository;
+import by.givebook.services.NamedService;
 import by.givebook.services.SimpleService;
 import by.givebook.services.impl.SimpleServiceImpl;
 import by.givebook.services.library.AuthorService;
@@ -36,7 +37,7 @@ public class OfferServiceImpl extends SimpleServiceImpl<Offer, OfferRepository> 
 
     @Autowired
     @Qualifier("offerTypeService")
-    SimpleService<OfferType> offerTypeSimpleService;
+    NamedService<OfferType> offerTypeSimpleService;
 
     @Override
     public void save(Offer entity) {

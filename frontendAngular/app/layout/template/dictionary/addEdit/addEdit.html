@@ -1,0 +1,28 @@
+<div ng-switch="mode">
+    <div ng-switch-default>
+        <input type="button"
+               class="w3-btn w3-green w3-hover-white w3-ripple"
+               value="Add"
+               ng-click="onActionAdd()"/>
+    </div>
+    <div class="w3-card"
+         style="max-width: 50%"
+         ng-switch-when=true>
+        <table>
+            <tr>
+                <td>
+                    Название:
+                </td>
+                <td>
+                    <input class="w3-input w3-hover-light-grey w3-border"
+                           id="name"
+                           type="text"
+                           ng-model="item.name"
+                           placeholder="Название"
+                           required/>
+                </td>
+            </tr>
+        </table>
+        <div gb-dictionary-put-cancel-buttons></div>
+    </div>
+</div>

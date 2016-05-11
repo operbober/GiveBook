@@ -1,0 +1,13 @@
+<div ng-switch="mode">
+    <div ng-switch-default>
+        <input type="button" class="w3-btn w3-green w3-hover-white w3-ripple" value="Add" ng-click="onActionAdd()"/>
+    </div>
+    <div ng-switch-when=true class="w3-card w3-light-grey" style="max-width: 50%">
+
+        <div gb-offers-add-select-boxes></div>
+        <div gb-offers-add-works></div>
+        <div gb-offers-add-authors></div>
+        <div gb-dictionary-put-cancel-buttons></div>
+
+    </div>
+</div>

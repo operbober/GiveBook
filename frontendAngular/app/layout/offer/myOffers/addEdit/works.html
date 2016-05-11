@@ -1,0 +1,35 @@
+<table>
+    <tr ng-show="item.book.works !== undefined && item.book.works.length > 0">
+        <td>Произведение(я):</td>
+        <td>
+            <input type="button"
+                   ng-repeat="work in item.book.works"
+                   ng-click="removeWorkFromItem(work)"
+                   value="{{convertWorkToString(work)}}"
+                   class="w3-btn w3-orange w3-hover-black"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Название произведения:</td>
+        <td>
+            <label>
+                <input id="workTitle" type="text"
+                       ng-model="newWork.name"
+                       ng-keyup="worksLiveSearch(newWork.name)"
+                       class="w3-input w3-white w3-hover-light-grey w3-ripple"
+                       placeholder="Евгений Онегин"
+                       required/>
+            </label>
+            <ul class="w3-ul w3-border w3-white w3-hoverable"
+                ng-show="worksQueryResult !== undefined && worksQueryResult.length > 0">
+                <li ng-repeat="work in worksQueryResult" ng-click="addWorkToItem(work)">
+                    {{convertWorkToString(work)}}
+                </li>
+                <li ng-click="worksQueryResult.splice(0, worksQueryResult.length)"
+                    class="w3-red">
+                    Закрыть
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>

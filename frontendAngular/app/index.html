@@ -2,9 +2,12 @@
 <html lang="en" ng-app="giveBook">
 <head>
     <meta charset="UTF-8">
-    <title>Give Book Bitch!</title>
+    <title>Give Book!</title>
 
-    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -20,18 +23,29 @@
     <script src="js/service/securityService.js"></script>
 
     <script src="js/directive/headerDirective.js"></script>
+    <script src="js/directive/footerDirective.js"></script>
+    <script src="js/directive/dictionary/addEdit.js"></script>
+    <script src="js/directive/dictionary/putCancelButtons.js"></script>
+    <script src="js/directive/dictionary/table.js"></script>
+    <script src="js/directive/offer/myOffers/table.js"></script>
+    <script src="js/directive/offer/myOffers/addEdit.js"></script>
+    <script src="js/directive/offer/myOffers/addEdit/selectBoxes.js"></script>
+    <script src="js/directive/offer/myOffers/addEdit/works.js"></script>
+    <script src="js/directive/offer/myOffers/addEdit/authors.js"></script>
 
     <script src="js/controller/offer/offerController.js"></script>
     <script src="js/controller/security/loginController.js"></script>
-    <script src="js/controller/template/dictionaryController.js"></script>
+    <script src="js/controller/template/dictionary/dictionaryController.js"></script>
     <script src="js/controller/template/headerController.js"></script>
+    <script src="js/controller/template/footerController.js"></script>
 </head>
 <body>
-<header>
 
-</header>
-
-<div ng-view id="centerContent" class="pageCentered"></div>
+<div class="wrapper">
+    <div gb-header class="header"></div>
+    <div ng-view id="content" class="main-content"></div>
+    <div gb-footer class="footer"></div>
+</div>
 
 </body>
 </html>

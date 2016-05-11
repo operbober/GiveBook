@@ -20,42 +20,51 @@ app
                 controller: 'loginController',
                 uri: '/login/'
             })
+            .when('/register', {
+                templateUrl: '../layout/security/register.html',
+                controller: 'loginController',
+                uri: '/register/'
+            })
             .when('/offers', {
-                templateUrl: '../layout/offer/offer.html',
+                templateUrl: '../layout/offer/overview/page.html',
                 controller: 'offerController',
                 uri: '/offers/'
             })
             .when('/myOffers', {
-                templateUrl: '../layout/offer/offer.html',
+                templateUrl: '../layout/offer/myOffers/page.html',
                 controller: 'offerController',
                 uri: '/myOffers/',
                 requires: {login: true}
             })
             .when('/offerTypes', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/offerTypes/'
             })
             .when('/bookTypes', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/bookTypes/',
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/bookConditions', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/bookConditions/',
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/genres', {
-                templateUrl: '../layout/template/dictionaryTable.html',
+                templateUrl: '../layout/template/dictionary/page.html',
                 controller: 'dictionaryController',
                 uri: '/genres/',
                 requires: {login: true, role: 'ROLE_ADMIN'}
             })
             .when('/404', {
                 templateUrl: '../layout/security/404.html'
+            })
+            .when('/', {
+                templateUrl: '../layout/security/oauth.html ',
+                controller: 'oauthController'
             })
             .otherwise({
                 redirectTo: '/404'
