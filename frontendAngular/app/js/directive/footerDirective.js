@@ -4,6 +4,7 @@
 
 directives.directive('gbFooter', function () {
     return {
-        templateUrl: '../../layout/template/footer.html'
+        templateUrl: '../../layout/template/footer.html',
+        controller: 'footerController'
     }
 });
