@@ -1,9 +1,12 @@
 package by.givebook.repositories;
 
 import by.givebook.entities.IdEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Default class description.
@@ -14,4 +17,5 @@ import org.springframework.stereotype.Repository;
  */
 @NoRepositoryBean
 public interface SimpleRepository<E extends IdEntity> extends CrudRepository<E, Long> {
+    Page<E> findAll(Pageable pageable);
 }
