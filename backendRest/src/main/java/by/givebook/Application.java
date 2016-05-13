@@ -53,9 +53,5 @@ public class Application {
         return new NamedServiceImpl<OfferType, NamedRepository<OfferType>>() { };
     }
 
-    @Bean
-    public SimpleService<Quote> quoteService() {
-        return new SimpleServiceImpl<Quote, SimpleRepository<Quote>>() { };
-    }
 }
 
