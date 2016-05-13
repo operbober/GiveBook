@@ -28,7 +28,10 @@ public class WorkController extends GenericController<Work, WorkService> {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/search")
-    protected List<Work> getById(@RequestParam("title") String title) {
-        return service.getSearchResults(title);
+    protected List<Work> getById(@RequestParam("title") String title,
+                                 @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                 @RequestParam(value = "size", required = false, defaultValue = "3") int size)
+    {
+        return service.getSearchResults(title, page, size);
     }
 }

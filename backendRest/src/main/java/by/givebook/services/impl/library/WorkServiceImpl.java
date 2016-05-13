@@ -6,8 +6,8 @@ import by.givebook.services.impl.SimpleServiceImpl;
 import by.givebook.services.library.AuthorService;
 import by.givebook.services.library.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,8 +21,8 @@ public class WorkServiceImpl extends SimpleServiceImpl<Work, WorkRepository> imp
     AuthorService authorService;
 
     @Override
-    public List<Work> getSearchResults(String title) {
-        return repository.findByTitleIgnoreCase(title);
+    public List<Work> getSearchResults(String name, int page, int size) {
+        return repository.findByNameContainingIgnoreCase(name, new PageRequest(page,size)).getContent();
     }
 
     @Override

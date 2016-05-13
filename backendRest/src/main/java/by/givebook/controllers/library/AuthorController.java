@@ -28,7 +28,9 @@ public class AuthorController extends GenericController<Author, AuthorService> {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/search")
-    protected List<Author> getById(@RequestParam("lastName") String lastName) {
-        return service.getSearchResults(lastName);
+    protected List<Author> getById(@RequestParam("lastName") String lastName,
+                                   @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                   @RequestParam(value = "size", required = false, defaultValue = "3") int size) {
+        return service.getSearchResults(lastName, page, size);
     }
 }

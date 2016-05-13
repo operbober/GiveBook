@@ -4,6 +4,7 @@ import by.givebook.entities.IdEntity;
 import by.givebook.repositories.SimpleRepository;
 import by.givebook.services.SimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,11 @@ public abstract class SimpleServiceImpl<E extends IdEntity, R extends SimpleRepo
         List<E> entities = new ArrayList<>();
         repository.findAll().forEach(entities::add);
         return entities;
+    }
+
+    @Override
+    public List<E> getAll(int page, int size) {
+        return repository.findAll(new PageRequest(page, size)).getContent();
     }
 
     @Override

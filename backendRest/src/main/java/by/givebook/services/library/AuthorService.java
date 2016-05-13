@@ -12,5 +12,5 @@ public interface AuthorService extends SimpleService<Author> {
 
     public Author getOldOrCreateNew(Author author);
 
-    List<Author> getSearchResults(String lastName);
+    List<Author> getSearchResults(String lastName, int page, int size);
 }

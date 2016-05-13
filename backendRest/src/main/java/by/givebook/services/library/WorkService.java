@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface WorkService extends SimpleService<Work> {
 
-    List<Work> getSearchResults(String title);
+    List<Work> getSearchResults(String name, int page, int size);
 
     Work getOldOrCreateNew(Work entity);
 }

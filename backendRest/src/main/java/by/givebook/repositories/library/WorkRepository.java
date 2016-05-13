@@ -3,10 +3,12 @@ package by.givebook.repositories.library;
 import by.givebook.entities.library.Author;
 import by.givebook.entities.library.Work;
 import by.givebook.repositories.SimpleRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 /**
@@ -33,6 +35,5 @@ public interface WorkRepository extends SimpleRepository<Work> {
             "HAVING COUNT (a) = :authorsSize")
     Work findByNameAndAuthors(@Param("name") String name, @Param("authors") List<Author> authors, @Param("authorsSize") Long authorsSize);
 
-    @Query(value = "Select w from Work w where w.name like %:title%")
-    List<Work> findByTitleIgnoreCase(@Param("title") String title);
+    Page<Work> findByNameContainingIgnoreCase(String name, Pageable pageable);
 }

@@ -13,6 +13,7 @@ import java.util.List;
 public interface SimpleService<E> {
     E get(Long id);
     List<E> getAll();
+    List<E> getAll(int page, int size);
     void delete(Long id);
     void save(E entity);
 }

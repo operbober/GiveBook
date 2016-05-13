@@ -31,6 +31,13 @@ public abstract class GenericController<E extends IdEntity, S extends SimpleServ
         return service.getAll();
     }
 
+    @RequestMapping(value = "/{page}/{size}",method = RequestMethod.GET)
+    protected List<E> get(@PathVariable("page") int page,
+                          @PathVariable("size") int size)
+    {
+        return service.getAll(page, size);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     protected E getById(@PathVariable("id") Long id) {
         return service.get(id);
